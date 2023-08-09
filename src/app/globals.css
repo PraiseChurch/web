@@ -25,3 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.sans-serif, * {
+  font-family: 'Lato', sans-serif;
+}
+
+.serif {
+  font-family: 'Arvo', serif;
+}
