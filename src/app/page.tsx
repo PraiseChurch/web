@@ -1,17 +1,20 @@
-import Image from "next/image";
+import { Navbar } from "../components";
+// import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center relative">
+    <main>
+      <Navbar />
+      {/*
       <Image
         src="/tulip-logo-white.png"
         alt="Vercel Logo"
-        className="opacity-5 absolute"
+        className="opacity-1 absolute"
         width={800}
         height={800}
         priority
       />
-      <div className="flex flex-col gap-12 p-10 rounded-md">
+       <div className="flex flex-col gap-12 p-10 rounded-md">
         <div className="text-center flex flex-col gap-4">
           <h2 className="text-xl uppercase">Website Under Construction</h2>
           <h1 className="serif text-6xl uppercase">Praise Church</h1>
@@ -34,7 +37,7 @@ export default function Home() {
 
         </div>
         <a className="text-center underline" href="https://trial-rcgell7u.finalweb2.finalweb.net/">View Our Old Website</a>
-      </div>
+      </div> */}
     </main>
   );
 }
