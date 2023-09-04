@@ -1,8 +1,13 @@
+'use client'
+import React, { useState } from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
 // components/Navbar.js
 import Link from "next/link";
 import Image from "next/image";
 
 export const Navbar = () => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
   return (
     <nav className="bg-black p-4">
       <div className="container mx-auto flex justify-between items-center top-0">
