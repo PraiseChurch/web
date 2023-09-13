@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-      arbitrarychange
+      <p>ffs please work</p>
       {/*
       <Image
         src="/tulip-logo-white.png"
