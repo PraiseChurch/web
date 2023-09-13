@@ -10,8 +10,9 @@ export const Navbar = () => {
   const toggleMenu = () => setMobileNavOpen(!mobileNavOpen);
 
   return (
-    <nav className="bg-black py-3 px-4">
-      <div className="container mx-auto flex justify-between items-center top-0 max-w-screen-lg">
+    <>
+      <nav className="bg-black py-3 px-4">
+        <div className="container mx-auto flex justify-between items-center top-0 max-w-screen-lg">
           <Link href="/" className="text-white font-semibold text-lg">
             <Image
               src="/tulip-logo-white.png"
@@ -39,6 +40,16 @@ export const Navbar = () => {
             )}
           </div>
         </div>
-    </nav>
+      </nav>
+      {mobileNavOpen ? (
+        <div className="m-0 top-0 left-0 h-full w-full fixed opacity-90 bg-black z-50 text-slate-100 p-5 flex flex-col items-end justify-end" onClick={() => toggleMenu()}>
+          <div>about</div>
+          <div>connect</div>
+          <div>follow</div>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
