@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-      hw
       {/*
       <Image
         src="/tulip-logo-white.png"
