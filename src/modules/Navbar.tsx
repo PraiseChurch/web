@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
-// components/Navbar.js
+import { Typography } from "../components";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -46,9 +46,10 @@ export const Navbar = () => {
           className="m-0 top-0 left-0 h-full w-full fixed opacity-90 bg-black z-50 text-slate-100 p-5 flex flex-col items-end justify-end"
           onClick={() => toggleMenu()}
         >
-          <div>about</div>
-          <div>connect</div>
-          <div>follow</div>
+          <Typography variant="heading">about</Typography>
+          <Typography variant="subheading">connect</Typography>
+          <Typography variant="body">follow</Typography>
+          <Typography variant="caption">follow</Typography>
         </div>
       ) : (
         ""

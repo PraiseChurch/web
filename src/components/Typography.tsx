@@ -7,16 +7,17 @@ interface TypographyProps {
   children: React.ReactNode;
 }
 
-const Typography: React.FC<TypographyProps> = ({ variant, children }) => {
+export const Typography: React.FC<TypographyProps> = ({
+  variant,
+  children,
+}) => {
   const classNames: { [key: string]: string } = {
-    heading: "text-4xl font-bold",
-    subheading: "text-xl font-semibold",
-    body: "text-base",
-    caption: "text-sm text-gray-500",
+    heading: "text-4xl font-bold serif",
+    subheading: "text-xl font-semibold sans-serif",
+    body: "text-base serif",
+    caption: "text-sm text-gray-500 sans-serif",
     // Add more variants as needed
   };
 
   return <span className={classNames[variant]}>{children}</span>;
 };
-
-export default Typography;
