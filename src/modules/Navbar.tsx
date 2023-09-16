@@ -43,7 +43,7 @@ export const Navbar = () => {
       </nav>
       {mobileNavOpen ? (
         <div
-          className="m-0 top-0 left-0 h-full w-full fixed opacity-90 bg-black z-50 text-slate-100 p-5 flex flex-col items-end justify-end"
+          className="m-0 top-0 left-0 h-full w-full fixed opacity-90 bg-black z-50 text-slate-100 p-5 flex flex-col items-end justify-start"
           onClick={() => toggleMenu()}
         >
           <Typography variant="heading">about</Typography>
