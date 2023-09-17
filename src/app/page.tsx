@@ -1,4 +1,4 @@
-import { Navbar } from "@/modules/Navbar";
+import { Navbar } from "@/app/modules/Navbar";
 // import Image from "next/image";
 
 export default function Home() {

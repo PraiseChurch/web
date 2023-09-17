@@ -1,3 +1,7 @@
 export default function Giving() {
-  return <h1>thisisgiving</h1>;
+    return (
+        <div>
+            <h1>hwgiving</h1>
+        </div>
+    )
 }
