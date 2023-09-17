@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-black py-3 px-4">
+      <nav className="bg-black py-3 px-4 sticky">
         <div className="container mx-auto flex justify-between items-center top-0 max-w-screen-lg">
           <Link href="/" className="text-white font-semibold text-lg">
             <Image

@@ -1,11 +1,8 @@
-import { Navbar } from "@/app/modules/Navbar";
 // import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
-      <Navbar />
-
       {/*
       <Image
         src="/tulip-logo-white.png"
