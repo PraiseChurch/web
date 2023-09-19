@@ -6,7 +6,7 @@ export default function Home() {
       <Image
         src="/tulip-logo-white.png"
         alt="Vercel Logo"
-        className="opacity-5 absolute"
+        className="opacity-5 absolute -z-10"
         width={800}
         height={800}
         priority
