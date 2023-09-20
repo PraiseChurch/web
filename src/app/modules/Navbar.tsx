@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-black py-3 px-4 sticky">
+      <nav className="bg-black py-3 px-4 sticky drop-shadow-md">
         <div className="container mx-auto flex justify-between items-center top-0 max-w-screen-lg">
           <Link href="/" className="text-white font-semibold text-lg">
             <Image
@@ -47,9 +47,9 @@ export const Navbar = () => {
           onClick={() => toggleMenu()}
         >
           <Typography variant="heading">about</Typography>
+          <Typography variant="caption">stream</Typography>
           <Typography variant="subheading">connect</Typography>
-          <Typography variant="body">follow</Typography>
-          <Typography variant="caption">follow</Typography>
+          <Typography variant="body">give</Typography>
         </div>
       ) : (
         ""
