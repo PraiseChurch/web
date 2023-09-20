@@ -2,11 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { Typography } from "../components";
 import { AiOutlineYoutube } from "react-icons/ai";
-import { BiLogoFacebookCircle } from "react-icons/bi";
 import { BsInstagram } from "react-icons/bs";
 
 export const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-gray-900 text-white p-4">
       <div className="container mx-auto flex justify-between max-w-screen-lg">
@@ -29,7 +27,7 @@ export const Footer: React.FC = () => {
       <div className="container mx-auto flex justify-between max-w-screen-lg">
         <div className="container flex justify-between max-w-screen-md items-center">
           <Typography variant="caption" color="text-white">
-            &copy; {currentYear} Praise Church West Covina
+            Praise Church West Covina
           </Typography>
           <Typography variant="caption" color="text-white" size="text-xl">
             |
