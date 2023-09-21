@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Typography } from "../components";
-import { AiOutlineYoutube } from "react-icons/ai";
-import { BsInstagram } from "react-icons/bs";
+import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 
 export const Footer: React.FC = () => {
   return (
@@ -24,30 +23,36 @@ export const Footer: React.FC = () => {
       <div className="container mx-auto flex justify-center max-w-screen-lg">
         <hr className="w-4/5 my-8" />
       </div>
-      <div className="container mx-auto flex justify-between max-w-screen-lg">
-        <div className="container flex justify-between max-w-screen-md items-center">
-          <Typography variant="caption" color="text-white">
-            Praise Church West Covina
+      <div className="container mx-auto flex flex-col justify-between max-w-screen-lg md:flex-row">
+        <div className="container flex flex-col justify-between max-w-screen-md items-center md:flex-row mr-8">
+          <Typography
+            variant="caption"
+            color="text-white"
+          >
+            Praise Church
           </Typography>
-          <Typography variant="caption" color="text-white" size="text-xl">
-            |
-          </Typography>
-          <Typography variant="caption" color="text-white">
+          <Typography
+            variant="caption"
+            color="text-white"
+          >
             Shadow Oak Park, West Covina, CA 91792
-          </Typography>
-          <Typography variant="caption" color="text-white" size="text-xl">
-            |
           </Typography>
           <Typography variant="caption" color="text-white">
             (626) 251-0952
           </Typography>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
           <Link href="https://www.instagram.com/praisechurchwc/">
-            <BsInstagram size="22" color="white" className="mx-1" />
+            <div className="bg-white hover:opacity-100 rounded-full w-7 h-7 flex items-center justify-center mx-0.5 my-1 md:opacity-80">
+              <span>
+                <AiFillInstagram size="20" color="black" />
+              </span>
+            </div>
           </Link>
           <Link href="https://www.youtube.com/@PraiseChurch">
-            <AiOutlineYoutube size="30" color="white" />
+            <div className="bg-white hover:opacity-100 rounded-full w-7 h-7 flex items-center justify-center mx-0.5 my-1 md:opacity-80">
+              <AiFillYoutube size="20" color="black" />
+            </div>
           </Link>
         </div>
       </div>
