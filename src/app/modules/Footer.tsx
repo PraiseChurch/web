@@ -4,6 +4,7 @@ import { Typography } from "../components";
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 
 export const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear()
   return (
     <footer className="bg-gray-900 text-white p-4">
       <div className="container mx-auto flex justify-between max-w-screen-lg">
@@ -29,7 +30,7 @@ export const Footer: React.FC = () => {
             variant="caption"
             color="text-white"
           >
-            Praise Church
+            &copy; {currentYear} Praise Church
           </Typography>
           <Typography
             variant="caption"

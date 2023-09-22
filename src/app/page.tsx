@@ -3,8 +3,7 @@
 export default function Home() {
   return (
     <main>
-      {/*
-      <Image
+      {/* <Image
         src="/tulip-logo-white.png"
         alt="Vercel Logo"
         className="opacity-1 absolute"
