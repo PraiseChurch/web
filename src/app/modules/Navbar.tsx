@@ -11,18 +11,24 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-black py-3 px-4 sticky drop-shadow-md">
+      <nav className="flex bg-black h-16 py-3 px-4 sticky drop-shadow-md items-center">
         <div className="container mx-auto flex justify-between items-center top-0 max-w-screen-lg">
-          <Link href="/" className="text-white font-semibold text-lg">
+          <Link href="/">
             <Image
               src="/tulip-logo-white.png"
               alt="praise church west covina logo"
               className="opacity-1"
-              width={24}
+              width={32}
               height={32}
               priority
             />
           </Link>
+          <div className="container hidden text-white md:flex md:justify-around md:max-w-screen-sm">
+            <Typography variant="subheading">About</Typography>
+            <Typography variant="subheading">Stream</Typography>
+            <Typography variant="subheading">Contact Us</Typography>
+            <Typography variant="subheading">Give</Typography>
+          </div>
           <div className="md:hidden flex space-x-4">
             {!mobileNavOpen ? (
               <button>

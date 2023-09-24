@@ -7,10 +7,10 @@ import { AiFillFacebook, AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-footer-dark-grey text-white p-4">
-      <div className="container mx-auto flex justify-between max-w-screen-lg">
-        <div className="container w-1/3">
-          <Link href="/" className="text-white font-semibold text-lg">
+    <footer className="bg-footer-dark-grey text-white py-4 px-6">
+      <div className="container mx-auto flex flex-col justify-center max-w-screen-lg md:flex-row">
+        <div className="container mx-auto mb-2 md:w-1/3 flex justify-center md:justify-start">
+          <Link href="/">
             <Image
               src="/tulip-logo-white.png"
               alt="praise church west covina logo"
@@ -21,16 +21,16 @@ export const Footer: React.FC = () => {
             />
           </Link>
         </div>
-        <div className="container mx-auto flex justify-between w-2/3">
-          <div className="w-1/3">
+        <div className="container mx-auto flex flex-col items-center md:flex-row md:w-2/3">
+          <div className="h-1/3 md:w-1/3">
             <h2 className="text-lg font-semibold">Calendar</h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p> */}
           </div>
-          <div className="w-1/3">
+          <div className="h-1/3 md:w-1/3">
             <h2 className="text-lg font-semibold">Contact Us</h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
           </div>
-          <div className="w-1/3">
+          <div className="h-1/3 md:w-1/3">
             <h2 className="text-lg font-semibold">Give</h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
           </div>
@@ -52,13 +52,13 @@ export const Footer: React.FC = () => {
           </Typography>
         </div>
         <div className="flex items-center justify-center">
-          <Link href="https://www.facebook.com/praisechurchwc">
-            <div className="bg-white hover:opacity-100 rounded-full w-7 h-7 flex items-center justify-center mx-0.5 my-1 md:opacity-80">
+          <div className="bg-white hover:opacity-100 rounded-full w-7 h-7 flex items-center justify-center mx-0.5 my-1 md:opacity-80">
+            <Link href="https://www.facebook.com/praisechurchwc">
               <span>
                 <AiFillFacebook size="20" color="black" />
               </span>
-            </div>
-          </Link>
+            </Link>
+          </div>
           <Link href="https://www.instagram.com/praisechurchwc/">
             <div className="bg-white hover:opacity-100 rounded-full w-7 h-7 flex items-center justify-center mx-0.5 my-1 md:opacity-80">
               <span>
