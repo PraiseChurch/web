@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-footer-dark-grey text-white py-3 px-4">
       <div className="container mx-auto flex flex-col justify-center max-w-screen-lg md:flex-row md:justify-evenly">
-        <div className="container mx-auto md:w-1/3 flex justify-center md:justify-start">
+        <div className="container mx-auto md:w-1/3 flex justify-center md:justify-start my-2">
           <Link href="/">
             <Image
               src="/tulip-logo-white.png"
