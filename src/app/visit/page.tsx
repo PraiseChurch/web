@@ -1,4 +1,4 @@
-export default function Visiting() {
+export default function Visit() {
     return (
         <p>hwvisiting</p>
     )

@@ -24,10 +24,18 @@ export const Navbar = () => {
             />
           </Link>
           <div className="container hidden text-white md:flex md:justify-around md:max-w-screen-sm">
-            <Typography variant="subheading">About</Typography>
-            <Typography variant="subheading">Stream</Typography>
-            <Typography variant="subheading">Contact Us</Typography>
-            <Typography variant="subheading">Give</Typography>
+            <Link href="about">
+              <Typography variant="subheading">About</Typography>
+            </Link>
+            <Link href="stream">
+              <Typography variant="subheading">Stream</Typography>
+            </Link>
+            <Link href="visit">
+              <Typography variant="subheading">Visit</Typography>
+            </Link>
+            <Link href="give">
+              <Typography variant="subheading">Give</Typography>
+            </Link>
           </div>
           <div className="md:hidden flex space-x-4">
             {!mobileNavOpen ? (
@@ -42,7 +50,7 @@ export const Navbar = () => {
                 />
               </button>
             ) : (
-              <div className="">asdf</div>
+              ""
             )}
           </div>
         </div>
@@ -52,10 +60,18 @@ export const Navbar = () => {
           className="m-0 top-0 left-0 h-full w-full fixed opacity-90 bg-black z-50 text-slate-100 p-5 flex flex-col items-end justify-start"
           onClick={() => toggleMenu()}
         >
-          <Typography variant="heading">about</Typography>
-          <Typography variant="caption">stream</Typography>
-          <Typography variant="subheading">connect</Typography>
-          <Typography variant="body">give</Typography>
+          <Link href="about">
+            <Typography variant="subheading">About</Typography>
+          </Link>
+          <Link href="stream">
+            <Typography variant="subheading">Stream</Typography>
+          </Link>
+          <Link href="visit">
+            <Typography variant="subheading">Visit</Typography>
+          </Link>
+          <Link href="give">
+            <Typography variant="subheading">Give</Typography>
+          </Link>
         </div>
       ) : (
         ""
