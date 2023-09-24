@@ -5,8 +5,9 @@ import React from "react";
 interface TypographyProps {
   children: React.ReactNode;
   color?: string;
+  fontStyle?: "italic" | "not-italic";
   letterCase?: "uppercase" | "lowercase" | "capitalize";
-  variant?: "heading" | "subheading" | "body" | "caption";
+  variant?: "heading" | "subheading" | "body" | "caption" | "heroSubheading";
   size?: string;
 }
 
@@ -16,15 +17,17 @@ export const Typography: React.FC<TypographyProps> = ({
   letterCase,
   size,
   children,
+  fontStyle
 }) => {
   const classNames: { [key: string]: string } = {
-    heading: "text-4xl font-bold serif tracking-wide",
-    subheading: "text-xl font-semibold sans-serif tracking-wide",
     body: "text-base serif tracking-wide",
     caption: "text-sm text-gray-500 sans-serif tracking-wide",
+    heading: "text-3xl md:text-6xl font-bold serif tracking-widest leading-relaxed",
+    heroSubheading: "text-xl md:text-2xl sans-serif tracking-wide leading-relaxed",
+    subheading: "text-xl font-semibold sans-serif tracking-wide",
     // Add more variants as needed
   };
 
-  const combinedClasses = `${classNames[variant]} ${color} ${letterCase} ${size}`;
+  const combinedClasses = `${classNames[variant]} ${fontStyle} ${color} ${letterCase} ${size}`;
   return <span className={combinedClasses}>{children}</span>;
 };
