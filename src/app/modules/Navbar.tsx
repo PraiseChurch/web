@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="flex bg-black h-16 py-3 px-4 sticky drop-shadow-md items-center">
+      <nav className="fixed top-0 left-0 right-0 bg-black h-16 py-3 px-4 drop-shadow-md z-50">
         <div className="container mx-auto flex justify-between items-center top-0 max-w-screen-lg">
           <Link href="/">
             <Image

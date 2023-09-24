@@ -24,7 +24,7 @@ export default function RootLayout({
       ></link>
       <body className={inter.className}>
         <Navbar />
-        <div>{children}</div>
+        <div className="container w-screen h-screen flex max-w-screen-lg py-3 px-4">{children}</div>
         <Footer />
       </body>
     </html>

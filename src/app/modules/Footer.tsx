@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-footer-dark-grey text-white py-3 px-4">
       <div className="container mx-auto flex flex-col justify-center max-w-screen-lg md:flex-row md:justify-evenly">
-        <div className="container mx-auto mb-2 md:w-1/3 flex justify-center md:justify-start">
+        <div className="container mx-auto md:w-1/3 flex justify-center md:justify-start">
           <Link href="/">
             <Image
               src="/tulip-logo-white.png"
@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
             />
           </Link>
         </div>
-        <div className="container mx-auto flex flex-col items-center md:flex-row md:w-2/3 md:justify-evenly">
+        <div className="container mx-auto flex flex-col items-center md:flex-row md:w-2/3 md:justify-between">
           <div className="h-1/3">
             <h2 className="text-lg font-semibold border-b border-accent-blue hover:border-white">
               Calendar
@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       <div className="container mx-auto flex justify-center max-w-screen-lg">
-        <hr className="w-4/5 my-8" />
+        <hr className="w-4/5 md: my-8" />
       </div>
       <div className="container mx-auto flex flex-col justify-between max-w-screen-lg md:flex-row">
         <div className="container flex flex-col justify-between max-w-screen-md items-center md:flex-row mr-8">
