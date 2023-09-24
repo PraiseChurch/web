@@ -7,8 +7,10 @@ interface ContainerProps {
 
 export const FluidContainer: React.FC<ContainerProps> = ({ children }) => {
   return (
-    <div className="container mx-auto p-4 flex flex-col items-center">
-      {children}
+    <div className="w-full bg-cyan-500">
+      <div className="container mx-auto py-3 px-4 flex max-w-screen-lg">
+        {children}
+      </div>
     </div>
   );
 };

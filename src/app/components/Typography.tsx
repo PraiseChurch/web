@@ -23,7 +23,7 @@ export const Typography: React.FC<TypographyProps> = ({
     body: "text-base serif tracking-wide",
     caption: "text-sm text-gray-500 sans-serif tracking-wide",
     heading: "text-3xl md:text-6xl font-bold serif tracking-widest leading-relaxed",
-    heroSubheading: "text-xlmd:text-2xl sans-serif tracking-wide leading-relaxed",
+    heroSubheading: "text-xl md:text-2xl sans-serif tracking-wide leading-relaxed",
     subheading: "text-xl font-semibold sans-serif tracking-wide",
     // Add more variants as needed
   };
