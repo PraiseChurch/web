@@ -7,8 +7,8 @@ import { AiFillFacebook, AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-footer-dark-grey text-white py-4 px-6">
-      <div className="container mx-auto flex flex-col justify-center max-w-screen-lg md:flex-row">
+    <footer className="bg-footer-dark-grey text-white py-3 px-4">
+      <div className="container mx-auto flex flex-col justify-center max-w-screen-lg md:flex-row md:justify-evenly">
         <div className="container mx-auto mb-2 md:w-1/3 flex justify-center md:justify-start">
           <Link href="/">
             <Image
@@ -21,17 +21,23 @@ export const Footer: React.FC = () => {
             />
           </Link>
         </div>
-        <div className="container mx-auto flex flex-col items-center md:flex-row md:w-2/3">
-          <div className="h-1/3 md:w-1/3">
-            <h2 className="text-lg font-semibold">Calendar</h2>
+        <div className="container mx-auto flex flex-col items-center md:flex-row md:w-2/3 md:justify-evenly">
+          <div className="h-1/3">
+            <h2 className="text-lg font-semibold border-b border-accent-blue hover:border-white">
+              Calendar
+            </h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p> */}
           </div>
-          <div className="h-1/3 md:w-1/3">
-            <h2 className="text-lg font-semibold">Contact Us</h2>
+          <div className="h-1/3">
+            <h2 className="text-lg font-semibold border-b border-accent-blue hover:border-white">
+              Contact Us
+            </h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
           </div>
-          <div className="h-1/3 md:w-1/3">
-            <h2 className="text-lg font-semibold">Give</h2>
+          <div className="h-1/3">
+            <h2 className="text-lg font-semibold border-b border-accent-blue hover:border-white">
+              Give
+            </h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
           </div>
         </div>
