@@ -17,6 +17,9 @@ const config: Config = {
         "accent-blue": "#535693",
         "footer-grey": "#333333",
         "footer-dark-grey": "#1F1F1F"
+      },
+      letterSpacing: {
+        "widester": ".25em"
       }
     },
     screens: {
