@@ -25,7 +25,7 @@ export const Hero: React.FC<HeroProps> = ({ imgSrc, preTitle, postTitle, title }
           {preTitle}
         </Typography>
       </span>
-      <div className="bg-black md:my-4 flex flex-col justify-center items-center">
+      <div className="bg-black md:my-2 flex flex-col justify-center items-center">
         <Typography variant="heading" color="text-white" letterCase="uppercase">
           {title}
         </Typography>

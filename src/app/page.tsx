@@ -5,7 +5,7 @@ export default function Home() {
     <main>
       <Hero preTitle="welcome to" title="Praise Church" postTitle="West Covina, CA" imgSrc="/praise-hero.jpg"/>
       <FluidContainer>
-        <p>hi</p>
+        <p>hisaididmoveon</p>
       </FluidContainer>
     </main>
   );

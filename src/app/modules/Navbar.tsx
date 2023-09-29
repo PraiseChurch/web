@@ -25,16 +25,16 @@ export const Navbar = () => {
           </Link>
           <div className="container hidden text-white md:flex md:justify-around md:max-w-screen-sm">
             <Link href="about">
-              <Typography variant="subheading">About</Typography>
+              <Typography variant="navSubheading">About</Typography>
             </Link>
             <Link href="stream">
-              <Typography variant="subheading">Stream</Typography>
+              <Typography variant="navSubheading">Stream</Typography>
             </Link>
             <Link href="visit">
-              <Typography variant="subheading">Visit</Typography>
+              <Typography variant="navSubheading">Visit</Typography>
             </Link>
             <Link href="give">
-              <Typography variant="subheading">Give</Typography>
+              <Typography variant="navSubheading">Give</Typography>
             </Link>
           </div>
           <div className="md:hidden flex space-x-4">

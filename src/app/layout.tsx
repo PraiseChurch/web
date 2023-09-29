@@ -24,7 +24,7 @@ export default function RootLayout({
       ></link>
       <body className={inter.className}>
         <Navbar />
-        <div className="flex flex-col w-screen bg-cyan-300">{children}</div>
+        <div className="flex flex-col w-screen">{children}</div>
         <Footer />
       </body>
     </html>

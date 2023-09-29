@@ -7,7 +7,7 @@ interface TypographyProps {
   color?: string;
   fontStyle?: "italic" | "not-italic";
   letterCase?: "uppercase" | "lowercase" | "capitalize";
-  variant?: "heading" | "subheading" | "body" | "caption" | "heroSubheading";
+  variant?: "heading" | "subheading" | "body" | "caption" | "heroSubheading" | "navSubheading";
   size?: string;
 }
 
@@ -22,9 +22,10 @@ export const Typography: React.FC<TypographyProps> = ({
   const classNames: { [key: string]: string } = {
     body: "text-base serif tracking-wide",
     caption: "text-sm text-gray-500 sans-serif tracking-wide",
-    heading: "text-3xl md:text-6xl font-bold serif tracking-widest leading-relaxed",
-    heroSubheading: "text-xl md:text-2xl sans-serif tracking-wide leading-relaxed",
+    heading: "text-3xl md:text-6xl font-bold sans-serif tracking-widest leading-relaxed",
+    heroSubheading: "text-xl md:text-2xl font-thin serif tracking-wide leading-relaxed",
     subheading: "text-xl font-semibold sans-serif tracking-wide",
+    navSubheading: "text-xs uppercase sans-serif tracking-widest"
     // Add more variants as needed
   };
 
