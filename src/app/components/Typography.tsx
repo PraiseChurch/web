@@ -1,7 +1,5 @@
-// components/Typography.tsx
 import React from "react";
 
-// Define TypeScript interface for text style variants
 interface TypographyProps {
   children: React.ReactNode;
   color?: string;
@@ -27,7 +25,6 @@ export const Typography: React.FC<TypographyProps> = ({
     navSubheading: "text-xs uppercase sans-serif tracking-widest",
     sectionSubheading: "text-2xl font-semibold sans-serif tracking-wide",
     subheading: "text-xl font-semibold sans-serif tracking-wide"
-    // Add more variants as needed
   };
 
   const combinedClasses = `${classNames[variant]} ${fontStyle} ${color} ${letterCase} ${size}`;

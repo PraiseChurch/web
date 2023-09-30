@@ -15,12 +15,14 @@ const config: Config = {
       },
       colors: {
         "accent-blue": "#535693",
+        "accent-dark-blue": "#0331C6",
+        "accent-light-blue": "#1540F9",
         "footer-grey": "#333333",
-        "footer-dark-grey": "#1F1F1F"
+        "footer-dark-grey": "#1F1F1F",
       },
       letterSpacing: {
-        "widester": ".25em"
-      }
+        widester: ".25em",
+      },
     },
     screens: {
       sm: "640px",
