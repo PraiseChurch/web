@@ -20,6 +20,7 @@ const config: Config = {
         "footer-grey": "#333333",
         "footer-dark-grey": "#1F1F1F",
       },
+      fontFamily: {},
       letterSpacing: {
         widester: ".25em",
       },

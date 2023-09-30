@@ -1,5 +1,6 @@
-import { Typography } from "../components";
+import Link from "next/link";
 import React from "react";
+import { Typography } from "../components";
 
 interface ButtonProps {
   href?: string;
@@ -19,9 +20,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-        <a href={href} className={classNames[variant]}>
+        <Link href={href} className={classNames[variant]}>
             <Typography>{title}</Typography>
-        </a>
+        </Link>
     )
   }
   return (
