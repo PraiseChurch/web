@@ -38,7 +38,8 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write",
-      "git add"
+      "git add",
+      "git add ."
     ]
   }
 }
