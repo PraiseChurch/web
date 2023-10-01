@@ -1,33 +1,25 @@
-// import { RootLayout } from "../layout";
+import { Button, Divider, FluidContainer, Hero, TextSubsection } from "../components";
+
 export default function Give() {
   return (
-    <div className="flex flex-col gap-12 p-10 rounded-md">
-      <div className="text-center flex flex-col gap-4">
-        <h2 className="text-xl uppercase">Website Under Construction</h2>
-        <h1 className="serif text-6xl uppercase">Praise Church</h1>
-        <h3 className="text-lg">Please check back soon!</h3>
-      </div>
-      <div className="text-center">
-        <p className="">Services Every Sunday at 10am</p>
-        <a
-          className="underline"
-          href="https://maps.google.com?q=Shadow%20Oak%20Park%2C%20West%20Covina%2C%20CA%2091792%2C%20"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Shadow Oak Park, West Covina, CA 91792"
-        >
-          Shadow Oak Park,{" "}
-          <span className="whitespace-nowrap">West Covina, CA 91792</span>
-        </a>
-        <p>praisechurchwc@gmail.com</p>
-        <p>626-251-0952</p>
-      </div>
-      <a
-        className="text-center underline"
-        href="https://trial-rcgell7u.finalweb2.finalweb.net/"
-      >
-        View Our Old Website
-      </a>
+    <div>
+      <Hero title="Give" imgSrc="/hero/give-hero-2.jpeg" position="center" />
+      <FluidContainer>
+        <TextSubsection title="Leviticus 27:30">
+          &quot;A tithe of everything from the land, whether grain from the soil
+          or fruit from the trees, belongs to the LORD; it is holy to the
+          LORD&quot;
+        </TextSubsection>
+        <Divider />
+        <TextSubsection title="Secure Giving Via CashApp">
+          If you want to partner with us in the work God is doing in West Covina
+          and beyond, please click the link below. Thank you for your
+          generosity!
+        </TextSubsection>
+        <div className="mx-auto flex justify-center">
+          <Button href="https://cash.app/$PraiseChurch" title="Give" />
+        </div>
+      </FluidContainer>
     </div>
   );
 }
