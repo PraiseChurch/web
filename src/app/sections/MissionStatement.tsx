@@ -32,7 +32,7 @@ export const MissionStatement = () => {
           </Typography>
           <div className="mx-auto">
             <Typography>
-              ...is by proclaiming the gospel of Christ in word and in deed.
+              ...is proclaiming the gospel of Christ in word and in deed.
             </Typography>
           </div>
         </div>
