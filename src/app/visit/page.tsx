@@ -1,32 +1,57 @@
+import Image from "next/image";
+import {
+  Divider,
+  FluidContainer,
+  Hero,
+  TextSubsection,
+  Typography,
+} from "../components";
+
 export default function Visit() {
   return (
-    <div className="flex flex-col gap-12 p-10 rounded-md">
-      <div className="text-center flex flex-col gap-4">
-        <h2 className="text-xl uppercase">Website Under Construction</h2>
-        <h1 className="serif text-6xl uppercase">Praise Church</h1>
-        <h3 className="text-lg">Please check back soon!</h3>
-      </div>
-      <div className="text-center">
-        <p className="">Services Every Sunday at 10am</p>
-        <a
-          className="underline"
-          href="https://maps.google.com?q=Shadow%20Oak%20Park%2C%20West%20Covina%2C%20CA%2091792%2C%20"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Shadow Oak Park, West Covina, CA 91792"
-        >
-          Shadow Oak Park,{" "}
-          <span className="whitespace-nowrap">West Covina, CA 91792</span>
-        </a>
-        <p>praisechurchwc@gmail.com</p>
-        <p>626-251-0952</p>
-      </div>
-      <a
-        className="text-center underline"
-        href="https://trial-rcgell7u.finalweb2.finalweb.net/"
-      >
-        View Our Old Website
-      </a>
+    <div>
+      <Hero title="Visit" imgSrc="/hero/visit-hero.jpeg" position="center" />
+      <FluidContainer>
+        <TextSubsection heading="Matthew 28:19-20">
+          &quot;Go therefore and make disciples of all nations, baptizing them
+          in the name of the Father and of the Son and of the Holy Spirit,
+          teaching them to observe all that I have commanded you.&quot;
+        </TextSubsection>
+        <Divider />
+        <Typography variant="sectionSubheading">
+          Where is Praise Church?
+        </Typography>
+        <Image
+          src="/pcwc-map.jpg"
+          alt="map of how to get to praise church west covina"
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="w-full h-auto rounded-md mt-1"
+        />
+        <TextSubsection heading="How long is our service?">
+          Our services typically last 1 hour and 15 minutes, from 10:00 AM to
+          11:15 AM, but everyone is cordially invited to partake in the
+          discussion groups after the sermon.
+        </TextSubsection>
+        <TextSubsection heading="What is the service like?">
+          Theologically rich and biblically rooted lyrics mixed with
+          contemporary musical style characterize the worship. The preaching is
+          unabashedly expository in style and robustly biblical theological
+          &mdash; how the history of redemption fit together &mdash; in content.
+        </TextSubsection>
+        <TextSubsection heading="How do people normally dress?">
+          Please come as you are. We welcome all people &mdash; from those who
+          prefer suit and tie to those who would rather wear shorts and shirt.
+          The principle of decency and the desire to give our best to the Lord
+          in worship govern our dress code.
+        </TextSubsection>
+        <TextSubsection heading="What about kids?">
+          Children&apos;s ministry teachers provide a safe and fun environment
+          for children of all age groups to learn and grow in the grace and
+          knowledge of Jesus during main sanctuary worship service.
+        </TextSubsection>
+      </FluidContainer>
     </div>
   );
 }

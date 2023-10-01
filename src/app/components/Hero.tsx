@@ -3,15 +3,17 @@ import { Typography } from "../components/Typography";
 interface HeroProps {
   backgroundColor?: string;
   fontColor?: string;
+  position?: "top" | "left" | "center" | "right" | "bottom";
   postTitle?: string;
   preTitle?: string;
   imgSrc?: string;
   title: string;
 }
-export const Hero: React.FC<HeroProps> = ({ imgSrc, preTitle, postTitle, title }) => {
+export const Hero: React.FC<HeroProps> = ({ imgSrc, position, preTitle, postTitle, title }) => {
   const backgroundImageStyle = imgSrc
     ? {
         backgroundImage: `url(${imgSrc})`,
+        backgroundPosition: `${position}`
       }
     : {};
 
@@ -25,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ imgSrc, preTitle, postTitle, title }
           {preTitle}
         </Typography>
       </span>
-      <div className="bg-black md:my-2 flex flex-col justify-center items-center">
+      <div className="bg-black md:my-3 flex flex-col justify-center items-center">
         <Typography variant="heading" color="text-white" letterCase="uppercase">
           {title}
         </Typography>

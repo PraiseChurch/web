@@ -61,16 +61,16 @@ export const Navbar = () => {
           onClick={() => toggleMenu()}
         >
           <Link href="about">
-            <Typography variant="subheading">About</Typography>
+            <Typography variant="navSubheading">About</Typography>
           </Link>
-          <Link href="stream">
-            <Typography variant="subheading">Stream</Typography>
+          <Link href="https://www.youtube.com/@PraiseChurch/streams">
+            <Typography variant="navSubheading">Stream</Typography>
           </Link>
           <Link href="visit">
-            <Typography variant="subheading">Visit</Typography>
+            <Typography variant="navSubheading">Visit</Typography>
           </Link>
           <Link href="give">
-            <Typography variant="subheading">Give</Typography>
+            <Typography variant="navSubheading">Give</Typography>
           </Link>
         </div>
       ) : (
