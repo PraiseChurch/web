@@ -17,10 +17,17 @@ const config: Config = {
         "accent-blue": "#535693",
         "accent-dark-blue": "#0331C6",
         "accent-light-blue": "#1540F9",
+        "accent-dark-green": "#004957",
+        "accent-darker-green": "#033946",
+        "accent-green": "#016673",
+        "accent-light-green": "#3B9C9F",
         "footer-grey": "#333333",
         "footer-dark-grey": "#1F1F1F",
       },
-      fontFamily: {},
+      fontFamily: {
+        serif: "var(--font-arvo)",
+        "sans-serif": "var(--font-lato)",
+      },
       letterSpacing: {
         widester: ".25em",
       },

@@ -27,7 +27,7 @@ export const Navbar = () => {
             <Link href="about">
               <Typography variant="navSubheading">About</Typography>
             </Link>
-            <Link href="stream">
+            <Link href="https://www.youtube.com/@PraiseChurch/streams" aria-label="praise church youtube stream">
               <Typography variant="navSubheading">Stream</Typography>
             </Link>
             <Link href="visit">

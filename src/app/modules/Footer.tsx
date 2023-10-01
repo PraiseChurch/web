@@ -23,19 +23,19 @@ export const Footer: React.FC = () => {
         </div>
         <div className="container mx-auto flex flex-col items-center md:flex-row md:w-2/3 md:justify-between">
           <div className="h-1/3">
-            <h2 className="text-lg font-semibold border-b border-accent-blue hover:border-white">
+            <h2 className="text-lg font-semibold border-b border-accent-green hover:border-white">
               Calendar
             </h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p> */}
           </div>
           <div className="h-1/3">
-            <h2 className="text-lg font-semibold border-b border-accent-blue hover:border-white">
+            <h2 className="text-lg font-semibold border-b border-accent-green hover:border-white">
               Contact Us
             </h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
           </div>
           <div className="h-1/3">
-            <h2 className="text-lg font-semibold border-b border-accent-blue hover:border-white">
+            <h2 className="text-lg font-semibold border-b border-accent-green hover:border-white">
               Give
             </h2>
             {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}

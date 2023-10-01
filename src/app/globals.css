@@ -22,12 +22,3 @@ body {
   overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
 }
-
-.sans-serif,
-* {
-  font-family: "Lato", sans-serif;
-}
-
-.serif {
-  font-family: "Arvo", serif;
-}

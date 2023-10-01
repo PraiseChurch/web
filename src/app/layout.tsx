@@ -4,12 +4,17 @@ import { Arvo, Inter, Lato } from "next/font/google";
 import { Footer, Navbar } from "./modules";
 
 const arvo = Arvo({
-  weight: "400",
+  weight: ["400", "700"],
   subsets: ["latin"],
+  variable: "--font-arvo",
+  display: "swap",
 });
+
 const lato = Lato({
-  weight: "300",
+  weight: ["100", "300", "400", "700", "900"],
   subsets: ["latin"],
+  variable: "--font-lato",
+  display: "swap",
 });
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,10 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.className} ${arvo.className} ${lato.className} font-sans-serif font-serif`}
-      >
+    <html
+      lang="en"
+      className={`${inter.className} ${arvo.variable} ${lato.variable} font-sans`}
+    >
+      <body>
         <Navbar />
         <div className="flex flex-col w-screen">{children}</div>
         <Footer />
