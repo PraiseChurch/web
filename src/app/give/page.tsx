@@ -14,7 +14,7 @@ export default function Give() {
         <TextSubsection title="Secure Giving Via CashApp">
           If you want to partner with us in the work God is doing in West Covina
           and beyond, please click the link below. Thank you for your
-          generosity!
+          generosity.
         </TextSubsection>
         <div className="mx-auto flex justify-center">
           <Button href="https://cash.app/$PraiseChurch" title="Give" />
