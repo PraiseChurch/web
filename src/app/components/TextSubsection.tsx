@@ -3,13 +3,13 @@ import { Typography } from "./Typography";
 
 interface TextSubsectionProps {
   children: ReactNode;
-  heading?: string;
+  title?: string;
 }
 
-export const TextSubsection: React.FC<TextSubsectionProps> = ({ children, heading }) => {
+export const TextSubsection: React.FC<TextSubsectionProps> = ({ children, title }) => {
   return (
     <div className="my-4 flex flex-col">
-      <Typography variant="sectionSubheading">{heading}</Typography>
+      <Typography variant="sectionSubheading">{title}</Typography>
       <Typography>
         {children}
       </Typography>
