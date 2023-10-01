@@ -6,11 +6,11 @@ export const MissionStatement = () => {
       <FluidContainer>
         <div className="my-6 flex flex-col">
           <Typography variant="sectionSubheading">
-            Our Mission With Hope
+            Our Mission Of Hope
           </Typography>
           <div className="mx-auto">
             <Typography>
-              ...is to spread the glory of God&apos;s presence in West Covina.
+              ...is to spread the glory of God&apos;s presence in West Covina
               and beyond.
             </Typography>
           </div>
