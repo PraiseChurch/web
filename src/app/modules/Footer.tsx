@@ -22,23 +22,20 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
         <div className="container mx-auto flex flex-col items-center md:flex-row md:w-2/3 md:justify-between">
-          <div className="h-1/3">
-            <h2 className="text-lg font-semibold border-b border-accent-green hover:border-white">
-              Calendar
-            </h2>
-            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p> */}
+          <div className="h-1/3 my-1">
+            <span className="border-b border-accent-green hover:border-white py-1">
+              <Typography variant="button">Calendar</Typography>
+            </span>
           </div>
-          <div className="h-1/3">
-            <h2 className="text-lg font-semibold border-b border-accent-green hover:border-white">
-              Contact Us
-            </h2>
-            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+          <div className="h-1/3 my-1">
+            <span className="border-b border-accent-green hover:border-white py-1">
+              <Typography variant="button">Contact Us</Typography>
+            </span>
           </div>
-          <div className="h-1/3">
-            <h2 className="text-lg font-semibold border-b border-accent-green hover:border-white">
-              Give
-            </h2>
-            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+          <div className="h-1/3 my-1">
+            <span className="border-b border-accent-green hover:border-white py-1">
+              <Typography variant="button">Give</Typography>
+            </span>
           </div>
         </div>
       </div>
@@ -47,17 +44,17 @@ export const Footer: React.FC = () => {
       </div>
       <div className="container mx-auto flex flex-col justify-between max-w-screen-lg md:flex-row">
         <div className="container flex flex-col justify-between max-w-screen-md items-center md:flex-row mr-8">
-          <Typography variant="caption" color="text-white">
+          <Typography variant="navSubheading" color="text-white">
             &copy; {currentYear} Praise Church
           </Typography>
-          <Typography variant="caption" color="text-white">
+          <Typography variant="navSubheading" color="text-white">
             Shadow Oak Park, West Covina, CA 91792
           </Typography>
-          <Typography variant="caption" color="text-white">
+          <Typography variant="navSubheading" color="text-white">
             (626) 251-0952
           </Typography>
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center pb-1 md:pb-0">
           <div className="bg-white hover:opacity-100 rounded-full w-7 h-7 flex items-center justify-center mx-0.5 my-1 md:opacity-80">
             <Link href="https://www.facebook.com/praisechurchwc">
               <span>
