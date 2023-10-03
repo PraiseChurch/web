@@ -2,6 +2,8 @@ import { GenericPage } from "../modules";
 
 export default function About() {
   return (
-    <GenericPage />
+    <div>
+      <GenericPage heroTitle="About" heroImgSrc="/hero/about-hero.jpeg" />
+    </div>
   );
 }

@@ -7,7 +7,7 @@ interface HeroProps {
   postTitle?: string;
   preTitle?: string;
   imgSrc?: string;
-  title: string;
+  title?: string;
 }
 export const Hero: React.FC<HeroProps> = ({
   imgSrc,
