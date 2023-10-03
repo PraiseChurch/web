@@ -10,7 +10,7 @@ import {
 export default function Visit() {
   return (
     <div>
-      <Hero title="Visit" imgSrc="/hero/visit-hero.jpeg" position="center" postTitle="&quot;Go therefore and make disciples of all nations..." />
+      <Hero title="Visit" imgSrc="/hero/visit-hero.jpeg" position="center" postTitle="&quot;Go therefore and make disciples of all nations...&quot;" />
       <FluidContainer>
         <TextSubsection title="Matthew 28:19-20">
           <sup>19</sup> &quot;Go therefore and make disciples of all nations, baptizing them
