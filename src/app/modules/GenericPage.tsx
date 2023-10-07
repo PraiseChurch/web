@@ -8,26 +8,22 @@ import {
   Typography,
   Verse,
 } from "../components";
-import { VerseProps } from "../types";
-
-interface GenericPageProps {
-  children?: ReactNode;
-  heroTitle?: string;
-  heroImgSrc?: string;
-  position?: "center" | "top" | "left" | "right" | "bottom" | undefined;
-}
+import { GenericPageProps, VerseProps } from "../types";
 
 interface CombinedProps extends GenericPageProps, VerseProps {}
 export const GenericPage: React.FC<CombinedProps> = ({
+  continuation,
   heroImgSrc,
   heroTitle,
   position,
+  text,
+  verse,
 }) => {
   return (
     <div>
       <Hero title={heroTitle} imgSrc={heroImgSrc} position={position} />
       <FluidContainer>
-        <Verse />
+        <Verse verse={verse} continuation={continuation} text={text} />
       </FluidContainer>
     </div>
   );
