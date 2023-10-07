@@ -1,3 +1,4 @@
+import React from "react";
 import { FluidContainer, Typography } from "../components";
 
 export const MissionStatement = () => {
