@@ -6,13 +6,16 @@ interface TextSubsectionProps {
   title?: string;
 }
 
-export const TextSubsection: React.FC<TextSubsectionProps> = ({ children, title }) => {
+export const TextSubsection: React.FC<TextSubsectionProps> = ({
+  children,
+  title,
+}) => {
   return (
     <div className="my-4 flex flex-col">
-      <Typography variant="sectionSubheading">{title}</Typography>
-      <Typography>
-        {children}
-      </Typography>
+      <div className="my-2">
+        <Typography variant="sectionSubheading">{title}</Typography>
+      </div>
+      <Typography>{children}</Typography>
     </div>
   );
 };
