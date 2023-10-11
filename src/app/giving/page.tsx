@@ -9,7 +9,7 @@ import {
 export default function Giving() {
   return (
     <div>
-      <Hero title="Giving" imgSrc="/hero/give-hero-2.jpeg" position="center" postTitle="&quot;... give, and it will be given to you.&quot;" />
+      <Hero title="Giving" imgSrc="/hero/harvest-giving-hero.jpeg" position="center" postTitle="&quot;... give, and it will be given to you.&quot;" />
       <FluidContainer>
         <TextSubsection title="Luke 6:38">
           <sup>38</sup> &quot;...give, and it will be given to you. Good measure, pressed
