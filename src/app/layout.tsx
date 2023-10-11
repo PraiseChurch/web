@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import React, { useState, ReactNode } from "react";
+import React from "react";
 import { Arvo, Inter, Lato } from "next/font/google";
 import { Footer, Navbar } from "./modules";
 
