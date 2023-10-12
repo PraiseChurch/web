@@ -6,12 +6,18 @@ export interface GenericPageProps {
   heroTitle?: string;
   heroImgSrc?: string;
   position?: "center" | "top" | "left" | "right" | "bottom" | undefined;
-  subSectionArray?: Array<Object>;
-  subSectionTitle?: string;
-}
+  subsectionArray?: Array<Object>;
+  subsectionChildren?: string;
+  subsectionTitle?: string;
+};
+
+export interface SubsectionObjectProps {
+  subsectionText: string;
+  subsectionTitle: string;
+};
 
 export interface VerseProps {
   continuation?: boolean;
   text?: string;
   verse?: string;
-}
+};

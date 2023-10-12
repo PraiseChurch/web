@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import Image from "next/image";
+"use client";
+import React, { useState } from "react";
 import {
   Divider,
   FluidContainer,
@@ -8,21 +8,22 @@ import {
   Typography,
   Verse,
 } from "../components";
-import { GenericPageProps, VerseProps } from "../types";
+import { GenericPageProps, SubsectionObjectProps, VerseProps } from "../types";
 
-interface CombinedProps extends GenericPageProps, VerseProps {}
+interface CombinedProps extends GenericPageProps, VerseProps {};
+
 export const GenericPage: React.FC<CombinedProps> = ({
   continuation,
   heroImgSrc,
   heroPostTitle,
   heroTitle,
   position,
-  subSectionArray,
-  subSectionChildren,
-  subSectionTitle,
+  subsectionArray,
   text,
   verse,
 }) => {
+  const [subsections, setSubsection] = useState<SubsectionObjectProps[]>(subsectionArray as SubsectionObjectProps[]);
+
   return (
     <div>
       <Hero
@@ -34,6 +35,13 @@ export const GenericPage: React.FC<CombinedProps> = ({
       <FluidContainer>
         <Verse verse={verse} continuation={continuation} text={text} />
         <Divider />
+        {subsections?.map((s: SubsectionObjectProps) => {
+          return (
+            <TextSubsection key={s.subsectionTitle} title={s.subsectionTitle}>
+              {s.subsectionText}
+            </TextSubsection>
+          );
+        })}
       </FluidContainer>
     </div>
   );

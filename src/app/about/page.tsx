@@ -10,7 +10,7 @@ export default function About() {
         heroPostTitle="&quot;In Him we have redemption through his blood...&quot;"
         heroTitle="About"
         position="center"
-        subSectionArray={aboutData.sections}
+        subsectionArray={aboutData.sections}
         text="In him we have redemption through his blood, the forgiveness of our trespasses, according to the riches of his grace."
         verse="Ephesians 1:7"
       />
