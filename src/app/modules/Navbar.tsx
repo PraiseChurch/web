@@ -33,8 +33,8 @@ export const Navbar = () => {
             <Link href="visit">
               <Typography variant="navSubheading">Visit</Typography>
             </Link>
-            <Link href="give">
-              <Typography variant="navSubheading">Give</Typography>
+            <Link href="giving">
+              <Typography variant="navSubheading">Giving</Typography>
             </Link>
           </div>
           <div className="md:hidden flex space-x-4">
@@ -61,16 +61,16 @@ export const Navbar = () => {
           onClick={() => toggleMenu()}
         >
           <Link href="about">
-            <Typography variant="navSubheading">About</Typography>
+            <Typography variant="mobileNavSubheading">About</Typography>
           </Link>
           <Link href="https://www.youtube.com/@PraiseChurch/streams">
-            <Typography variant="navSubheading">Stream</Typography>
+            <Typography variant="mobileNavSubheading">Stream</Typography>
           </Link>
           <Link href="visit">
-            <Typography variant="navSubheading">Visit</Typography>
+            <Typography variant="mobileNavSubheading">Visit</Typography>
           </Link>
-          <Link href="give">
-            <Typography variant="navSubheading">Give</Typography>
+          <Link href="giving">
+            <Typography variant="mobileNavSubheading">Giving</Typography>
           </Link>
         </div>
       ) : (

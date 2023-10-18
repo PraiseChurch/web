@@ -1,10 +1,11 @@
+import React from "react";
 import { FluidContainer, Typography } from "../components";
 
 export const MissionStatement = () => {
   return (
     <div className="my-10 px-5">
       <FluidContainer>
-        <div className="my-6 flex flex-col">
+        <div className="my-6 flex flex-col items-center">
           <Typography variant="sectionSubheading">
             Our Mission Of Hope
           </Typography>
@@ -15,7 +16,7 @@ export const MissionStatement = () => {
             </Typography>
           </div>
         </div>
-        <div className="my-6 flex flex-col">
+        <div className="my-6 flex flex-col items-center">
           <Typography variant="sectionSubheading">
             Our Motivation By Faith
           </Typography>
@@ -26,7 +27,7 @@ export const MissionStatement = () => {
             </Typography>
           </div>
         </div>
-        <div className="my-6 flex flex-col">
+        <div className="my-6 flex flex-col items-center">
           <Typography variant="sectionSubheading">
             Our Means Through Love
           </Typography>

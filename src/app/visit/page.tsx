@@ -10,12 +10,11 @@ import {
 export default function Visit() {
   return (
     <div>
-      <Hero title="Visit" imgSrc="/hero/visit-hero.jpeg" position="center" />
+      <Hero title="Visit" imgSrc="/hero/visit-hero.jpeg" position="center" postTitle="&quot;Go therefore and make disciples of all nations...&quot;" />
       <FluidContainer>
         <TextSubsection title="Matthew 28:19-20">
-          &quot;Go therefore and make disciples of all nations, baptizing them
-          in the name of the Father and of the Son and of the Holy Spirit,
-          teaching them to observe all that I have commanded you.&quot;
+          <sup>19</sup> &quot;Go therefore and make disciples of all nations, baptizing them
+          in the name of the Father and of the Son and of the Holy Spirit, <sup>20</sup> teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age.&quot;
         </TextSubsection>
         <Divider />
         <Typography variant="sectionSubheading">

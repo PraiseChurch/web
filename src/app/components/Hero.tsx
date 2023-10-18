@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "../components/Typography";
+import { FluidContainer, Typography } from "../components";
 interface HeroProps {
   backgroundColor?: string;
   fontColor?: string;
@@ -7,36 +7,50 @@ interface HeroProps {
   postTitle?: string;
   preTitle?: string;
   imgSrc?: string;
-  title: string;
+  title?: string;
 }
-export const Hero: React.FC<HeroProps> = ({ imgSrc, position, preTitle, postTitle, title }) => {
+export const Hero: React.FC<HeroProps> = ({
+  imgSrc,
+  position,
+  preTitle,
+  postTitle,
+  title,
+}) => {
   const backgroundImageStyle = imgSrc
     ? {
         backgroundImage: `url(${imgSrc})`,
-        backgroundPosition: `${position}`
+        backgroundPosition: `${position}`,
       }
     : {};
 
   return (
     <div
-      className={`h-screen w-screen bg-cover flex flex-col justify-center items-center`}
+      className={`h-screen w-screen bg-cover flex flex-col justify-center items-center px-5`}
       style={backgroundImageStyle}
     >
       <span className="bg-black">
-        <Typography variant="heroSubheading" color="text-white" fontStyle="italic">
+        <Typography
+          variant="heroSubheading"
+          color="text-white"
+          fontStyle="italic"
+        >
           {preTitle}
         </Typography>
       </span>
-      <div className="bg-black md:my-3 flex flex-col justify-center items-center">
+      <span className="bg-black my-3 flex flex-col justify-center items-center">
         <Typography variant="heading" color="text-white" letterCase="uppercase">
           {title}
         </Typography>
-      </div>
-      <span className="bg-black">
-        <Typography variant="heroSubheading" color="text-white" fontStyle="italic">
-          {postTitle}
-        </Typography>
       </span>
+        <span className="bg-black md:my-3 flex flex-col justify-center items-center text-center">
+          <Typography
+            variant="heroSubheading"
+            color="text-white"
+            fontStyle="italic"
+          >
+            {postTitle}
+          </Typography>
+        </span>
     </div>
   );
 };
