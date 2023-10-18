@@ -7,7 +7,7 @@ interface HeroProps {
   postTitle?: string;
   preTitle?: string;
   imgSrc?: string;
-  title: string;
+  title?: string;
 }
 export const Hero: React.FC<HeroProps> = ({
   imgSrc,
@@ -37,12 +37,12 @@ export const Hero: React.FC<HeroProps> = ({
           {preTitle}
         </Typography>
       </span>
-      <div className="bg-black my-3 flex flex-col justify-center items-center">
+      <span className="bg-black my-3 flex flex-col justify-center items-center">
         <Typography variant="heading" color="text-white" letterCase="uppercase">
           {title}
         </Typography>
-      </div>
-        <div className="bg-black md:my-3 flex flex-col justify-center items-center text-center">
+      </span>
+        <span className="bg-black md:my-3 flex flex-col justify-center items-center text-center">
           <Typography
             variant="heroSubheading"
             color="text-white"
@@ -50,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({
           >
             {postTitle}
           </Typography>
-        </div>
+        </span>
     </div>
   );
 };
