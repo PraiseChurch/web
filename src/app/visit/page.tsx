@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import {
   Divider,
   FluidContainer,
@@ -7,6 +8,10 @@ import {
   Typography,
 } from "../components";
 
+export const metadata: Metadata = {
+  title: "Visit",
+  description: "Visit our vibrant Christian community here at Praise Church West Covina and learn about what a typical service is like"
+}
 export default function Visit() {
   return (
     <div>

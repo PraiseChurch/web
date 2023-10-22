@@ -5,7 +5,6 @@ import {
   FluidContainer,
   Hero,
   TextSubsection,
-  Typography,
   Verse,
 } from "../components";
 import { GenericPageProps, SubsectionObjectProps, VerseProps } from "../types";
