@@ -5,8 +5,9 @@ import aboutData from "../../data/about.json";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Praise Church West Covina About"
+  description: "Learn more about Praise Church West Covina and what we believe in"
 }
+
 export default function About() {
   return (
     <div>
