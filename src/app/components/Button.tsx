@@ -20,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-        <Link href={href} className={classNames[variant]}>
+        <Link href={href} className={classNames[variant]} target="_blank">
             <Typography variant="button">{title}</Typography>
         </Link>
     )
