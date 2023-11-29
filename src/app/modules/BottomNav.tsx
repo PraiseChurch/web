@@ -54,15 +54,17 @@ export const BottomNav = () => {
           opacity: 1,
         }}
         transition={{
-          duration: 1, // Immediate transition
-          delay: 2, // Delay of 8 seconds
+          duration: 1,
+          delay: 2,
         }}
         className="fixed w-full bottom-0 left-0 right-0 z-50"
       >
         <div className="flex w-full justify-between">
           <motion.div
             initial={{ backgroundColor: "#FFF" }}
-            whileHover={{ backgroundColor: "#FAFAFA" }}
+            whileHover={{
+              backgroundColor: "rgb(217,217,217, 0.5)",
+            }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="flex justify-center items-center w-1/3 justify-between px-4 border-r-2 border-gray-100"
           >
@@ -84,8 +86,10 @@ export const BottomNav = () => {
           </motion.div>
           <motion.div
             initial={{ backgroundColor: "#FFF" }}
-            whileHover={{ backgroundColor: "#FAFAFA" }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
+            whileHover={{
+              backgroundColor: "rgb(217,217,217, 0.5)",
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="flex justify-center items-center w-1/3 justify-between px-4 border-r-2 border-gray-100"
           >
             <div className="flex justify-between w-full py-8">
@@ -103,8 +107,10 @@ export const BottomNav = () => {
           </motion.div>
           <motion.div
             initial={{ backgroundColor: "#FFF" }}
-            whileHover={{ backgroundColor: "#FAFAFA" }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
+            whileHover={{
+              backgroundColor: "rgb(217,217,217, 0.5)",
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="flex justify-center items-center w-1/3 justify-between px-4 border-r-2 border-gray-100"
           >
             <div className="flex justify-between w-full py-8">

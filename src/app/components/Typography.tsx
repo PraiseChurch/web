@@ -35,8 +35,7 @@ export const Typography: React.FC<TypographyProps> = ({
     body: "text-black text-base font-serif tracking-wide",
     button: "text-base font-sans-serif font-semibold text-md tracking-wide",
     caption: "text-black text-sm text-gray-500 font-sans-serif tracking-wide",
-    heading:
-      "text-black text-3xl md:text-6xl font-bold font-sans-serif tracking-widest leading-relaxed",
+    heading: "text-3xl md:text-6xl font-bold font-serif leading-relaxed",
     heroSubheading:
       "text-xl md:text-2xl font-thin font-serif tracking-wide leading-relaxed",
     navSubheading:

@@ -1,5 +1,5 @@
 .blobBase {
-  /* position: absolute; */
+  position: absolute;
   border-radius: 50%;
   filter: blur(120px);
   z-index: -1;
