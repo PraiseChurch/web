@@ -1,13 +1,21 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import React from "react";
-import { Arvo, Inter, Lato } from "next/font/google";
+import { Arvo, Inter, Lato, Merriweather } from "next/font/google";
 import { Footer, Navbar } from "./modules";
+import { BottomNav } from "./modules/BottomNav";
 
 const arvo = Arvo({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-arvo",
+  display: "swap",
+});
+
+const merriweather = Merriweather({
+  weight: ["400", "700"], // Assuming these weights are available for Merriweather
+  subsets: ["latin"],
+  variable: "--font-merriweather", // Updated CSS variable name
   display: "swap",
 });
 
@@ -32,11 +40,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.className} ${arvo.variable} ${lato.variable} font-sans`}
+      className={`${inter.className} ${arvo.variable} ${lato.variable} ${merriweather.variable} font-sans`}
     >
       <body>
         <Navbar />
         <div className="flex flex-col w-screen">{children}</div>
+        <BottomNav />
         <Footer />
       </body>
     </html>

@@ -23,9 +23,17 @@ const config: Config = {
         "accent-light-green": "#3B9C9F",
         "footer-grey": "#333333",
         "footer-dark-grey": "#1F1F1F",
+
+        // New Colors
+        "kinda-gray": "#E2E2E2",
+        "dark-stroke": "#5C5C5C",
+        "dark-gray": "#414143",
+        "very-dark-gray": "#1E1E1E",
+        orange: "#DD820D",
+        "kinda-dark-orange": "#BF6C00",
       },
       fontFamily: {
-        serif: "var(--font-arvo)",
+        serif: "var(--font-merriweather)",
         "sans-serif": "var(--font-lato)",
       },
       letterSpacing: {
