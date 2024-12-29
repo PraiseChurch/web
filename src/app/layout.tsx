@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import React from "react";
 import { Arvo, Inter, Lato } from "next/font/google";
 import { Footer, Navbar } from "./modules";
+import { Analytics } from '@vercel/analytics/next';
 
 const arvo = Arvo({
   weight: ["400", "700"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Navbar />
         <div className="flex flex-col w-screen">{children}</div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
