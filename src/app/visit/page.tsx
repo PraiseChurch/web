@@ -22,7 +22,7 @@ export default function Visit() {
           in the name of the Father and of the Son and of the Holy Spirit, <sup>20</sup> teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age.&quot;
         </TextSubsection>
         <Divider />
-        <Typography variant="sectionSubheading">
+        {/* <Typography variant="sectionSubheading">
           Where is Praise Church?
         </Typography>
         <Image
@@ -32,10 +32,10 @@ export default function Visit() {
           height="0"
           sizes="100vw"
           className="w-full h-auto rounded-md mt-1"
-        />
+        /> */}
         <TextSubsection title="How long is our service?">
-          Our services typically last 1 hour and 15 minutes, from 10:00 AM to
-          11:15 AM, but everyone is cordially invited to partake in the
+          Our services typically last 1 hour and 15 minutes, from 10:30 AM to
+          11:45 AM, but everyone is cordially invited to partake in the
           discussion groups after the sermon.
         </TextSubsection>
         <TextSubsection title="What is the service like?">
