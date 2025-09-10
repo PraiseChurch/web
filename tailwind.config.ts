@@ -26,7 +26,7 @@ const config: Config = {
       },
       fontFamily: {
         serif: "var(--font-arvo)",
-        "sans-serif": "var(--font-lato)",
+        sans: ["Bricolage Grotesque", "sans-serif"],
       },
       letterSpacing: {
         widester: ".25em",

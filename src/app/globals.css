@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -21,4 +22,9 @@ body {
   padding: 0;
   overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+html {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
 }
