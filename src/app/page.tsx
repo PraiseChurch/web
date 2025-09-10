@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <main
-      className="min-h-screen w-full bg-white flex flex-col snap-y snap-proximity overflow-y-auto h-screen"
+      className="min-h-screen w-full bg-white flex flex-col snap-y snap-proximity overflow-y-auto h-screen pb-32"
       style={{ scrollBehavior: "smooth" }}
     >
       {/* Slides with navigation */}

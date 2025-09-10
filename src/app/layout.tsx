@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import React from "react";
 import { Arvo, Inter } from "next/font/google";
 import { Footer, Navbar } from "./modules";
+import { Footer as NewFooter } from "./components/Footer";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -34,7 +35,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <div className="flex flex-col w-screen">{children}</div>
-        <Footer />
+        <NewFooter />
         <Analytics />
         <SpeedInsights />
       </body>

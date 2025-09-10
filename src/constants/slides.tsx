@@ -1,3 +1,5 @@
+import { Separator } from "../app/components/Separator";
+
 export const slideTitles = [
   "Praise Church West Covina",
   "Our Mission of Hope",
@@ -24,29 +26,13 @@ export const slideData = [
     title: slideTitles[1],
     content: (
       <>
-        <h2 className="text-5xl mb-4 text-left">
-          <span className="font-thin">Our Mission</span>{" "}
+        <h2 className="text-5xl text-left">
+          <span className="font-normal">Our Mission</span>{" "}
           <span className="font-bold italic">of Hope</span>
         </h2>
+        <Separator className="w-24 mb-6" delay={0.3} />
         <p className="text-xl text-gray-700 max-w-xl lg:max-w-7xl lg:min-w-4xl text-left">
           is to spread the glory of God's presence in West Covina and beyond
-        </p>
-      </>
-    ),
-    bg: "bg-white",
-    font: "font-serif",
-    alignment: "items-start",
-  },
-  {
-    title: slideTitles[2],
-    content: (
-      <>
-        <h2 className="text-5xl mb-4 text-left">
-          <span className="font-thin">Our Motivation</span>{" "}
-          <span className="font-bold italic">by Faith</span>
-        </h2>
-        <p className="text-xl text-gray-700 max-w-xl lg:max-w-7xl lg:min-w-4xl text-left">
-          is the surpassing joy of God's indwelling Spirit in our hearts
         </p>
       </>
     ),
@@ -55,13 +41,32 @@ export const slideData = [
     alignment: "items-start",
   },
   {
+    title: slideTitles[2],
+    content: (
+      <>
+        <h2 className="text-5xl text-left">
+          <span className="font-normal">Our Motivation</span>{" "}
+          <span className="font-bold italic">by Faith</span>
+        </h2>
+        <Separator className="w-24 mb-6" delay={0.3} />
+        <p className="text-xl text-gray-700 max-w-xl lg:max-w-7xl lg:min-w-4xl text-left">
+          is the surpassing joy of God's indwelling Spirit in our hearts
+        </p>
+      </>
+    ),
+    bg: "bg-white",
+    font: "font-serif",
+    alignment: "items-start",
+  },
+  {
     title: slideTitles[3],
     content: (
       <>
-        <h2 className="text-5xl mb-4 text-left">
-          <span className="font-thin">Our Means</span>{" "}
+        <h2 className="text-5xl text-left">
+          <span className="font-normal">Our Means</span>{" "}
           <span className="font-bold italic">through Love</span>
         </h2>
+        <Separator className="w-24 mb-6" delay={0.3} />
         <p className="text-xl text-gray-700 max-w-xl lg:max-w-7xl lg:min-w-4xl text-left">
           is to spread the glory of God's presence in West Covina and beyond
         </p>
