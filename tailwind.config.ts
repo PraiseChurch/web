@@ -25,7 +25,7 @@ const config: Config = {
         "footer-dark-grey": "#1F1F1F",
       },
       fontFamily: {
-        serif: "var(--font-arvo)",
+        serif: ["Merriweather", "serif"],
         sans: ["Bricolage Grotesque", "sans-serif"],
       },
       letterSpacing: {
