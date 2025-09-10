@@ -5,6 +5,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/constants/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -23,6 +24,8 @@ const config: Config = {
         "accent-light-green": "#3B9C9F",
         "footer-grey": "#333333",
         "footer-dark-grey": "#1F1F1F",
+        "slide-dark": "#1E1E1E",
+        "slide-orange": "#DD820D",
       },
       fontFamily: {
         serif: ["Merriweather", "serif"],

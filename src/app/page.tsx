@@ -8,6 +8,20 @@ import { slideData } from "../constants/slides";
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   
+  // Function to get text colors based on slide background
+  const getTextColor = (slideBg: string) => {
+    switch (slideBg) {
+      case "bg-slide-dark":
+        return "text-slide-dark";
+      case "bg-slide-orange":
+        return "text-slide-orange";
+      case "bg-white":
+        return "text-gray-900";
+      default:
+        return "text-gray-900";
+    }
+  };
+  
   // Refs for each slide
   const slideRefs = [
     useRef<HTMLDivElement>(null), // Slide 1
@@ -82,6 +96,7 @@ export default function Home() {
                         direction="prev"
                         label={arr[idx - 1].title}
                         onClick={() => scrollToSlide(idx - 1)}
+                        textColor={idx === 1 ? "text-gray-400" : getTextColor(arr[idx - 1].bg)}
                       />
                     )}
                   </div>
@@ -91,6 +106,7 @@ export default function Home() {
                         direction="next"
                         label={arr[idx + 1].title}
                         onClick={() => scrollToSlide(idx + 1)}
+                        textColor={getTextColor(arr[idx + 1].bg)}
                       />
                     )}
                   </div>

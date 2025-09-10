@@ -25,7 +25,7 @@ export const slideData = (
         >
           <div className="flex flex-col items-center gap-4 px-4">
             <motion.h1
-              className="text-3xl font-light tracking-tight leading-tight font-serif"
+              className="text-3xl font-semibold tracking-tight leading-tight font-serif"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -33,7 +33,7 @@ export const slideData = (
               {slideTitles[0]}
             </motion.h1>
             <motion.p
-              className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-serif"
+              className="text-lg font-light text-gray-600 mb-4 max-w-3xl mx-auto leading-relaxed font-serif"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -75,21 +75,21 @@ export const slideData = (
     content: (
       <>
         <motion.h2
-          className="text-5xl text-left"
+          className="text-5xl text-left text-white"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.25, 0, 1] }}
         >
-          <span className="font-normal">Our Mission</span>{" "}
+          <span className="font-thin">Our Mission</span>{" "}
           <span className="font-bold italic">of Hope</span>
         </motion.h2>
         <Separator
-          className="w-24 mb-6"
+          className="mb-6 bg-white"
           delay={0.4}
           slideActive={currentSlide === 1}
         />
         <motion.p
-          className="text-xl text-gray-700 max-w-xl lg:max-w-7xl lg:min-w-4xl text-left"
+          className="text-xl text-white max-w-xl lg:max-w-7xl lg:min-w-4xl text-left"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -98,7 +98,7 @@ export const slideData = (
         </motion.p>
       </>
     ),
-    bg: "bg-gray-50",
+    bg: "bg-slide-dark",
     font: "font-serif",
     alignment: "items-start",
   },
@@ -107,31 +107,31 @@ export const slideData = (
     content: (
       <>
         <motion.h2
-          className="text-5xl text-left"
+          className="text-5xl text-left text-slide-dark"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.25, 0, 1] }}
         >
-          <span className="font-normal">Our Motivation</span>{" "}
+          <span className="font-thin">Our Motivation</span>{" "}
           <span className="font-bold italic">by Faith</span>
         </motion.h2>
         <Separator
-          className="w-24 mb-6"
+          className="mb-6 bg-slide-dark"
           delay={0.4}
           slideActive={currentSlide === 2}
         />
         <motion.p
-          className="text-xl text-gray-700 max-w-xl lg:max-w-7xl lg:min-w-4xl text-left"
+          className="text-xl text-slide-dark max-w-xl lg:max-w-7xl lg:min-w-4xl text-left"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          is the unshakable confidence in Christ’s finished work and His ongoing
+          is the unshakable confidence in Christ's finished work and His ongoing
           reign
         </motion.p>
       </>
     ),
-    bg: "bg-white",
+    bg: "bg-slide-orange",
     font: "font-serif",
     alignment: "items-start",
   },
@@ -145,11 +145,11 @@ export const slideData = (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.25, 0, 1] }}
         >
-          <span className="font-normal">Our Means</span>{" "}
+          <span className="font-thin">Our Means</span>{" "}
           <span className="font-bold italic">through Love</span>
         </motion.h2>
         <Separator
-          className="w-24 mb-6"
+          className="mb-6"
           delay={0.4}
           slideActive={currentSlide === 3}
         />

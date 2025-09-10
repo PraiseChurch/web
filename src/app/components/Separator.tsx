@@ -19,8 +19,11 @@ export function Separator({
   const isHorizontal = direction === "horizontal";
   
   const baseClasses = isHorizontal 
-    ? "my-6 h-px bg-gray-300" 
-    : "my-6 w-px bg-gray-300";
+    ? "my-6 h-px" 
+    : "my-6 w-px";
+    
+  const defaultColor = className.includes('bg-') ? '' : 'bg-gray-300';
+  const defaultWidth = isHorizontal && !className.includes('w-') ? 'w-full' : '';
   
   const animationProps = isHorizontal
     ? {
@@ -58,7 +61,7 @@ export function Separator({
 
   return (
     <motion.div
-      className={`${baseClasses} ${className}`}
+      className={`${baseClasses} ${defaultWidth} ${defaultColor} ${className}`}
       initial={animationProps.initial}
       animate={animationProps.animate}
       style={animationProps.style}
