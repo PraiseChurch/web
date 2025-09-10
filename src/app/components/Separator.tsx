@@ -5,12 +5,14 @@ interface SeparatorProps {
   direction?: "horizontal" | "vertical";
   className?: string;
   delay?: number;
+  slideActive?: boolean;
 }
 
 export function Separator({ 
   direction = "horizontal", 
   className = "",
-  delay = 0 
+  delay = 0,
+  slideActive = true
 }: SeparatorProps) {
   const isHorizontal = direction === "horizontal";
   
@@ -21,12 +23,12 @@ export function Separator({
   const animationProps = isHorizontal
     ? {
         initial: { scaleX: 0 },
-        animate: { scaleX: 1 },
+        animate: slideActive ? { scaleX: 1 } : { scaleX: 0 },
         style: { transformOrigin: "left center" }
       }
     : {
         initial: { scaleY: 0 },
-        animate: { scaleY: 1 },
+        animate: slideActive ? { scaleY: 1 } : { scaleY: 0 },
         style: { transformOrigin: "bottom center" }
       };
 

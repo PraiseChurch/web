@@ -1,11 +1,13 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { useRef } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { SlideNavButton } from "./components/SlideNavButton";
 import { slideData } from "../constants/slides";
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
   // Refs for each slide
   const slideRefs = [
     useRef<HTMLDivElement>(null), // Slide 1
@@ -15,12 +17,36 @@ export default function Home() {
   ];
 
   // Scroll to slide by index
-  const scrollToSlide = (idx: number) => {
+  const scrollToSlide = useCallback((idx: number) => {
     const ref = slideRefs[idx]?.current;
     if (ref) {
+      setCurrentSlide(idx);
       ref.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }, [slideRefs]);
+
+  // Intersection Observer to detect current slide
+  useEffect(() => {
+    const observers = slideRefs.map((ref, idx) => {
+      if (!ref.current) return null;
+      
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setCurrentSlide(idx);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      
+      observer.observe(ref.current);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach(observer => observer?.disconnect());
+    };
+  }, []);
 
   return (
     <main
@@ -28,7 +54,7 @@ export default function Home() {
       style={{ scrollBehavior: "smooth" }}
     >
       {/* Slides with navigation */}
-      {slideData.map((slide, idx, arr) => (
+      {slideData(currentSlide).map((slide, idx, arr) => (
         <section
           key={slide.title}
           ref={slideRefs[idx]}
@@ -36,34 +62,40 @@ export default function Home() {
         >
           <AnimatePresence>
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className={`flex flex-col ${slide.alignment} max-w-5xl`}
+              initial={{ opacity: 0, y: 60, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ margin: "-100px" }}
+              transition={{ 
+                duration: 1.2, 
+                ease: [0.25, 0.25, 0, 1],
+                staggerChildren: 0.15
+              }}
+              className={`flex flex-col ${slide.alignment} ${slide.isSpecialSlide ? 'max-w-7xl w-full px-8' : 'max-w-5xl'}`}
             >
               {slide.content}
-              {/* SlideNavButton controls spaced left/right */}
-              <div className="flex justify-between items-center w-full mt-12">
-                <div className="flex text-left">
-                  {idx > 0 && (
-                    <SlideNavButton
-                      direction="prev"
-                      label={arr[idx - 1].title}
-                      onClick={() => scrollToSlide(idx - 1)}
-                    />
-                  )}
+              {/* SlideNavButton controls spaced left/right - hidden for special slides */}
+              {!slide.isSpecialSlide && (
+                <div className="flex justify-between items-center w-full mt-12">
+                  <div className="flex text-left">
+                    {idx > 0 && (
+                      <SlideNavButton
+                        direction="prev"
+                        label={arr[idx - 1].title}
+                        onClick={() => scrollToSlide(idx - 1)}
+                      />
+                    )}
+                  </div>
+                  <div className="flex text-end">
+                    {idx < arr.length - 1 && (
+                      <SlideNavButton
+                        direction="next"
+                        label={arr[idx + 1].title}
+                        onClick={() => scrollToSlide(idx + 1)}
+                      />
+                    )}
+                  </div>
                 </div>
-                <div className="flex text-end">
-                  {idx < arr.length - 1 && (
-                    <SlideNavButton
-                      direction="next"
-                      label={arr[idx + 1].title}
-                      onClick={() => scrollToSlide(idx + 1)}
-                    />
-                  )}
-                </div>
-              </div>
+              )}
             </motion.div>
           </AnimatePresence>
         </section>

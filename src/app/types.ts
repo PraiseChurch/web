@@ -21,3 +21,12 @@ export interface VerseProps {
   text?: string;
   verse?: string;
 };
+
+export interface SlideProps {
+  title: string;
+  content: React.ReactNode;
+  bg: string;
+  font: string;
+  alignment: string;
+  isSpecialSlide?: boolean;
+};
