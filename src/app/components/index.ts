@@ -3,6 +3,7 @@ export * from "./Divider";
 export * from "./FluidContainer";
 export * from "./Footer";
 export * from "./Hero";
+export * from "./PageHeader";
 export * from "./ScrollIndicator";
 export * from "./Separator";
 export * from "./TextSubsection"

@@ -1,48 +1,99 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
+    darkMode: ["class"],
+    content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/constants/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      colors: {
-        "accent-blue": "#535693",
-        "accent-dark-blue": "#0331C6",
-        "accent-light-blue": "#1540F9",
-        "accent-dark-green": "#004957",
-        "accent-darker-green": "#033946",
-        "accent-green": "#016673",
-        "accent-light-green": "#3B9C9F",
-        "footer-grey": "#333333",
-        "footer-dark-grey": "#1F1F1F",
-        "slide-dark": "#1E1E1E",
-        "slide-orange": "#DD820D",
-      },
-      fontFamily: {
-        serif: ["Merriweather", "serif"],
-        sans: ["Bricolage Grotesque", "sans-serif"],
-      },
-      letterSpacing: {
-        widester: ".25em",
-      },
-    },
-    screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
-    },
+  	extend: {
+  		backgroundImage: {
+  			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+  			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+  		},
+  		colors: {
+  			'accent-blue': '#535693',
+  			'accent-dark-blue': '#0331C6',
+  			'accent-light-blue': '#1540F9',
+  			'accent-dark-green': '#004957',
+  			'accent-darker-green': '#033946',
+  			'accent-green': '#016673',
+  			'accent-light-green': '#3B9C9F',
+  			'footer-grey': '#333333',
+  			'footer-dark-grey': '#1F1F1F',
+  			'slide-dark': '#1E1E1E',
+  			'slide-orange': '#DD820D',
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			popover: {
+  				DEFAULT: 'hsl(var(--popover))',
+  				foreground: 'hsl(var(--popover-foreground))'
+  			},
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			secondary: {
+  				DEFAULT: 'hsl(var(--secondary))',
+  				foreground: 'hsl(var(--secondary-foreground))'
+  			},
+  			muted: {
+  				DEFAULT: 'hsl(var(--muted))',
+  				foreground: 'hsl(var(--muted-foreground))'
+  			},
+  			accent: {
+  				DEFAULT: 'hsl(var(--accent))',
+  				foreground: 'hsl(var(--accent-foreground))'
+  			},
+  			destructive: {
+  				DEFAULT: 'hsl(var(--destructive))',
+  				foreground: 'hsl(var(--destructive-foreground))'
+  			},
+  			border: 'hsl(var(--border))',
+  			input: 'hsl(var(--input))',
+  			ring: 'hsl(var(--ring))',
+  			chart: {
+  				'1': 'hsl(var(--chart-1))',
+  				'2': 'hsl(var(--chart-2))',
+  				'3': 'hsl(var(--chart-3))',
+  				'4': 'hsl(var(--chart-4))',
+  				'5': 'hsl(var(--chart-5))'
+  			}
+  		},
+  		fontFamily: {
+  			serif: [
+  				'Merriweather',
+  				'serif'
+  			],
+  			sans: [
+  				'Bricolage Grotesque',
+  				'sans-serif'
+  			]
+  		},
+  		letterSpacing: {
+  			widester: '.25em'
+  		},
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		}
+  	},
+  	screens: {
+  		sm: '640px',
+  		md: '768px',
+  		lg: '1024px',
+  		xl: '1280px',
+  		'2xl': '1536px'
+  	}
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;

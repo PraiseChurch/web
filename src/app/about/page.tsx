@@ -1,25 +1,44 @@
-import React from "react";
-import type { Metadata } from "next";
-import { GenericPage } from "../modules";
-import aboutData from "../../data/about.json";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Learn more about Praise Church West Covina and what we believe in"
-}
+import React from "react";
+import { motion } from "framer-motion";
+import { Shield } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { FluidContainer } from "../components/FluidContainer";
+import { Typography } from "@/components/ui/typography";
 
 export default function About() {
   return (
-    <div>
-      <GenericPage
-        heroImgSrc="/hero/bible-about-hero.jpeg"
-        heroPostTitle="&quot;In Him we have redemption through his blood...&quot;"
-        heroTitle="About"
-        position="center"
-        subsectionArray={aboutData.sections}
-        text="In him we have redemption through his blood, the forgiveness of our trespasses, according to the riches of his grace."
-        verse="Ephesians 1:7"
-      />
+    <div className="min-h-screen bg-white">
+      <FluidContainer>
+        <div className="py-16">
+          {/* Page Header */}
+          <motion.div
+            className="text-center min-h-[60vh] flex flex-col justify-center"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <PageHeader
+              icon={<Shield className="w-12 h-12 text-orange-500" />}
+              title="Doctrinal Statement"
+              subtitle="Establishing a concise summary of what we believe, as guided by Scripture, is necessary because it guards us from error and unites us in the essentials of Christian faith."
+            />
+          </motion.div>
+
+          {/* Content will go here */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <Typography variant="muted">
+              Content coming soon...
+            </Typography>
+          </motion.div>
+        </div>
+      </FluidContainer>
     </div>
   );
 }

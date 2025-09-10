@@ -1,6 +1,8 @@
 import { Separator } from "../app/components/Separator";
 import { ScrollIndicator } from "../app/components/ScrollIndicator";
+import { PageHeader } from "../app/components/PageHeader";
 import { motion } from "framer-motion";
+import { Church } from "lucide-react";
 
 export const slideTitles = [
   "Praise Church West Covina",
@@ -23,24 +25,11 @@ export const slideData = (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <div className="flex flex-col items-center gap-4 px-4">
-            <motion.h1
-              className="text-3xl font-semibold tracking-tight leading-tight font-serif"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            >
-              {slideTitles[0]}
-            </motion.h1>
-            <motion.p
-              className="text-lg font-light text-gray-600 mb-4 max-w-3xl mx-auto leading-relaxed font-serif"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            >
-              A modern, friendly church community in West Covina, CA
-            </motion.p>
-          </div>
+          <PageHeader
+            icon={<Church className="w-12 h-12 text-orange-500" />}
+            title={slideTitles[0]}
+            subtitle="A modern, friendly church community in West Covina, CA"
+          />
 
           {/* Scrolling Line Indicator */}
           <motion.div
