@@ -1,4 +1,5 @@
 import { Separator } from "../app/components/Separator";
+import { ScrollIndicator } from "../app/components/ScrollIndicator";
 import { motion } from "framer-motion";
 
 export const slideTitles = [
@@ -8,7 +9,10 @@ export const slideTitles = [
   "Our Means through Love",
 ];
 
-export const slideData = (currentSlide: number) => [
+export const slideData = (
+  currentSlide: number,
+  scrollToSlide?: (idx: number) => void
+) => [
   {
     title: slideTitles[0],
     content: (
@@ -19,22 +23,45 @@ export const slideData = (currentSlide: number) => [
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <motion.h1
-            className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          <div className="flex flex-col items-center gap-4 px-4">
+            <motion.h1
+              className="text-3xl font-light tracking-tight leading-tight font-serif"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
+              {slideTitles[0]}
+            </motion.h1>
+            <motion.p
+              className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-serif"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              A modern, friendly church community in West Covina, CA
+            </motion.p>
+          </div>
+
+          {/* Scrolling Line Indicator */}
+          <motion.div
+            className="my-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
           >
-            {slideTitles[0]}
-          </motion.h1>
-          <motion.p
-            className="text-xl md:text-2xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed"
+            <ScrollIndicator />
+          </motion.div>
+
+          {/* Text-based CTA */}
+          <motion.button
+            className="text-lg font-serif text-gray-700 hover:text-gray-900 cursor-pointer transition-colors duration-200"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+            onClick={() => scrollToSlide && scrollToSlide(1)}
           >
-            A modern, friendly church community in West Covina, CA
-          </motion.p>
+            Who We Are
+          </motion.button>
         </motion.div>
       </>
     ),

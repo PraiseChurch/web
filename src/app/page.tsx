@@ -54,7 +54,7 @@ export default function Home() {
       style={{ scrollBehavior: "smooth" }}
     >
       {/* Slides with navigation */}
-      {slideData(currentSlide).map((slide, idx, arr) => (
+      {slideData(currentSlide, scrollToSlide).map((slide, idx, arr) => (
         <section
           key={slide.title}
           ref={slideRefs[idx]}
