@@ -38,7 +38,7 @@ export const Navbar = () => {
   }, [pathname]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 h-16 px-8 flex items-center justify-between z-50 font-sans">
+    <nav className="fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-lg border-b border-gray-300/50 h-16 px-8 flex items-center justify-between z-50 font-sans">
       <Link href="/">
         <Image
           src="/tulip-logo-black.png"
