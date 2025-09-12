@@ -4,9 +4,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState, useCallback, useEffect } from "react";
 import { SlideNavButton } from "./components/SlideNavButton";
 import { slideData } from "../constants/slides";
+import { useSlideContext } from "../contexts/SlideContext";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { setCurrentSlide: setContextSlide, setCurrentSlideBg } = useSlideContext();
+  
+  // Update context when slide changes
+  useEffect(() => {
+    const slides = slideData(currentSlide);
+    const currentSlideBg = slides[currentSlide]?.bg || 'bg-white';
+    setContextSlide(currentSlide);
+    setCurrentSlideBg(currentSlideBg);
+  }, [currentSlide, setContextSlide, setCurrentSlideBg]);
   
   // Function to get text colors based on slide background
   const getTextColor = (slideBg: string) => {
@@ -48,6 +58,11 @@ export default function Home() {
         ([entry]) => {
           if (entry.isIntersecting) {
             setCurrentSlide(idx);
+            // Update context with current slide background
+            const slides = slideData(idx);
+            const slideBg = slides[idx]?.bg || 'bg-white';
+            setContextSlide(idx);
+            setCurrentSlideBg(slideBg);
           }
         },
         { threshold: 0.5 }

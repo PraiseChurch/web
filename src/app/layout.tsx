@@ -6,6 +6,7 @@ import { Footer, Navbar } from "./modules";
 import { Footer as NewFooter } from "./components/Footer";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SlideProvider } from "../contexts/SlideContext";
 
 
 const arvo = Arvo({
@@ -33,9 +34,11 @@ export default function RootLayout({
       className="font-sans"
     >
       <body>
-        <Navbar />
-        <div className="flex flex-col w-screen">{children}</div>
-        <NewFooter />
+        <SlideProvider>
+          <Navbar />
+          <div className="flex flex-col w-screen">{children}</div>
+          <NewFooter />
+        </SlideProvider>
         <Analytics />
         <SpeedInsights />
       </body>

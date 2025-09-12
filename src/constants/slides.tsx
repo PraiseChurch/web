@@ -28,7 +28,7 @@ export const slideData = (
           <PageHeader
             icon={<Church className="w-12 h-12 text-orange-500" />}
             title={slideTitles[0]}
-            subtitle="A modern, friendly church community in West Covina, CA"
+            subtitle="Rooted in Scripture. Centered on Christ. Growing in Grace."
           />
 
           {/* Scrolling Line Indicator */}

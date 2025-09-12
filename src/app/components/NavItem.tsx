@@ -10,12 +10,13 @@ interface NavItemProps {
   children: React.ReactNode;
   onClick?: () => void;
   selected?: boolean;
+  textColor?: string;
 }
 
-const NavItem = ({ href, children, onClick }: NavItemProps) => (
+const NavItem = ({ href, children, onClick, textColor = "text-gray-800" }: NavItemProps) => (
   <Link
     href={href}
-    className="uppercase text-xs font-medium tracking-widest text-gray-800 hover:text-orange-500 transition h-full flex items-center px-2 transition-colors duration-200"
+    className={`uppercase text-xs font-medium tracking-widest ${textColor} hover:text-orange-500 transition h-full flex items-center px-2 transition-colors duration-200`}
     onClick={onClick}
   >
     {children}
