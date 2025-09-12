@@ -49,14 +49,15 @@ export default function Home() {
     }
   }, [slideRefs]);
 
-  // Intersection Observer to detect current slide
+  // Intersection Observer to detect current slide with smoother snapping
   useEffect(() => {
     const observers = slideRefs.map((ref, idx) => {
       if (!ref.current) return null;
       
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
+          // Snap when slide is 15% visible
+          if (entry.intersectionRatio >= 0.15) {
             setCurrentSlide(idx);
             // Update context with current slide background
             const slides = slideData(idx);
@@ -65,7 +66,10 @@ export default function Home() {
             setCurrentSlideBg(slideBg);
           }
         },
-        { threshold: 0.5 }
+        { 
+          threshold: [0.15, 0.85], // Trigger at 15% and 85% visibility
+          rootMargin: "-5% 0px -5% 0px" // Smaller margin for more precise detection
+        }
       );
       
       observer.observe(ref.current);
@@ -77,10 +81,57 @@ export default function Home() {
     };
   }, []);
 
+  // Enhanced scroll snapping - snap to nearest slide when scrolling stops
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+    
+    const handleScroll = () => {
+      clearTimeout(scrollTimeout);
+      
+      scrollTimeout = setTimeout(() => {
+        // Find the slide that's most visible
+        let mostVisibleSlide = 0;
+        let maxVisibility = 0;
+        
+        slideRefs.forEach((ref, idx) => {
+          if (ref.current) {
+            const rect = ref.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            
+            // Calculate how much of the slide is visible
+            const visibleTop = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+            const visibilityRatio = visibleTop / viewportHeight;
+            
+            // If this slide is more than 15% visible and more visible than current max
+            if (visibilityRatio >= 0.15 && visibilityRatio > maxVisibility) {
+              maxVisibility = visibilityRatio;
+              mostVisibleSlide = idx;
+            }
+          }
+        });
+        
+        // Only snap if the difference is significant enough and not already transitioning
+        if (mostVisibleSlide !== currentSlide && maxVisibility > 0.3) {
+          scrollToSlide(mostVisibleSlide);
+        }
+      }, 300); // Increased wait time to 300ms for less abrupt snapping
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, [currentSlide, scrollToSlide]);
+
   return (
     <main
       className="min-h-screen w-full bg-white flex flex-col snap-y snap-proximity overflow-y-auto h-screen pb-32"
-      style={{ scrollBehavior: "smooth" }}
+      style={{ 
+        scrollBehavior: "smooth",
+        scrollSnapStop: "normal"
+      }}
     >
       {/* Slides with navigation */}
       {slideData(currentSlide, scrollToSlide).map((slide, idx, arr) => (
