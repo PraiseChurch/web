@@ -66,13 +66,13 @@ export const MobileBlocker: React.FC<{ children: React.ReactNode }> = ({ childre
               Desktop Experience Required
             </h1>
             
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-gray-600 mb-6 font-sans">
               Our website is currently optimized for desktop viewing. 
               Please visit us on a desktop or laptop computer for the best experience.
             </p>
             
             {/* Church Info */}
-            <div className="border-t pt-6 mt-6">
+            <div className="border-t pt-6 mt-6 font-sans">
               <h2 className="font-serif font-semibold text-gray-900 mb-2">
                 Praise Church West Covina
               </h2>
