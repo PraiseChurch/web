@@ -158,7 +158,7 @@ export const VisitContent: React.FC = () => {
                     variant="p"
                     className="text-sm text-gray-900 font-medium"
                   >
-                    From suit and tie to shorts and shirt - all are welcome
+                    From suit and tie to shorts and shirt—all are welcome
                   </Typography>
                 </div>
 
@@ -170,7 +170,7 @@ export const VisitContent: React.FC = () => {
                       variant="h4"
                       className="text-lg text-gray-900 font-serif"
                     >
-                      Children's Ministry
+                      Children&apos;s Ministry
                     </Typography>
                   </div>
                   <Typography variant="small" className="text-gray-600 mb-2">
