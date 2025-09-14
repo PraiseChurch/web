@@ -7,6 +7,7 @@ import { Footer as NewFooter } from "./components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SlideProvider } from "../contexts/SlideContext";
+import { MobileBlocker } from "./components/MobileBlocker";
 
 const arvo = Arvo({
   weight: ["400", "700"],
@@ -15,7 +16,11 @@ const arvo = Arvo({
   display: "swap",
 });
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Praise Church West Covina",
@@ -28,15 +33,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="font-sans">
-      <body>
-        <SlideProvider>
-          <Navbar />
-          <div className="flex flex-col w-screen">{children}</div>
-          <NewFooter />
-        </SlideProvider>
+    <html lang="en">
+      <body className={`${inter.variable} ${arvo.variable} antialiased`}>
         <Analytics />
         <SpeedInsights />
+        <MobileBlocker>
+          <SlideProvider>
+            <Navbar />
+            {children}
+            <NewFooter />
+          </SlideProvider>
+        </MobileBlocker>
       </body>
     </html>
   );

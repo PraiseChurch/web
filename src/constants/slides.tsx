@@ -83,7 +83,7 @@ export const slideData = (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          is to spread the glory of God's presence in West Covina and beyond
+          is to spread the glory of God&apos;s presence in West Covina and beyond
         </motion.p>
       </>
     ),
@@ -115,7 +115,7 @@ export const slideData = (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          is the unshakable confidence in Christ's finished work and His ongoing
+          is the unshakable confidence in Christ&apos;s finished work and His ongoing
           reign
         </motion.p>
       </>
@@ -148,7 +148,7 @@ export const slideData = (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          is the surpassing joy of God's indwelling Spirit in our hearts
+          is the surpassing joy of God&apos;s indwelling Spirit in our hearts
         </motion.p>
       </>
     ),

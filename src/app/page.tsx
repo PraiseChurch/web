@@ -1,23 +1,34 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import { SlideNavButton } from "./components/SlideNavButton";
 import { slideData } from "../constants/slides";
 import { useSlideContext } from "../contexts/SlideContext";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { setCurrentSlide: setContextSlide, setCurrentSlideBg } = useSlideContext();
-  
+  const { setCurrentSlide: setContextSlide, setCurrentSlideBg } =
+    useSlideContext();
+
   // Update context when slide changes
   useEffect(() => {
     const slides = slideData(currentSlide);
-    const currentSlideBg = slides[currentSlide]?.bg || 'bg-white';
+    const currentSlideBg = slides[currentSlide]?.bg || "bg-white";
     setContextSlide(currentSlide);
     setCurrentSlideBg(currentSlideBg);
   }, [currentSlide, setContextSlide, setCurrentSlideBg]);
+
+  // Refs for each slide
+  const slideRef1 = useRef<HTMLDivElement>(null);
+  const slideRef2 = useRef<HTMLDivElement>(null);
+  const slideRef3 = useRef<HTMLDivElement>(null);
+  const slideRef4 = useRef<HTMLDivElement>(null);
   
+  const slideRefs = useMemo(() => {
+    return [slideRef1, slideRef2, slideRef3, slideRef4];
+  }, [slideRef1, slideRef2, slideRef3, slideRef4]);
+
   // Function to get text colors based on slide background
   const getTextColor = (slideBg: string) => {
     switch (slideBg) {
@@ -31,29 +42,24 @@ export default function Home() {
         return "text-gray-900";
     }
   };
-  
-  // Refs for each slide
-  const slideRefs = [
-    useRef<HTMLDivElement>(null), // Slide 1
-    useRef<HTMLDivElement>(null), // Slide 2
-    useRef<HTMLDivElement>(null), // Slide 3
-    useRef<HTMLDivElement>(null), // Slide 4
-  ];
 
   // Scroll to slide by index
-  const scrollToSlide = useCallback((idx: number) => {
-    const ref = slideRefs[idx]?.current;
-    if (ref) {
-      setCurrentSlide(idx);
-      ref.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [slideRefs]);
+  const scrollToSlide = useCallback(
+    (idx: number) => {
+      const ref = slideRefs[idx]?.current;
+      if (ref) {
+        setCurrentSlide(idx);
+        ref.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    [slideRefs]
+  );
 
   // Intersection Observer to detect current slide with smoother snapping
   useEffect(() => {
     const observers = slideRefs.map((ref, idx) => {
       if (!ref.current) return null;
-      
+
       const observer = new IntersectionObserver(
         ([entry]) => {
           // Snap when slide is 15% visible
@@ -61,47 +67,50 @@ export default function Home() {
             setCurrentSlide(idx);
             // Update context with current slide background
             const slides = slideData(idx);
-            const slideBg = slides[idx]?.bg || 'bg-white';
+            const slideBg = slides[idx]?.bg || "bg-white";
             setContextSlide(idx);
             setCurrentSlideBg(slideBg);
           }
         },
-        { 
+        {
           threshold: [0.15, 0.85], // Trigger at 15% and 85% visibility
-          rootMargin: "-5% 0px -5% 0px" // Smaller margin for more precise detection
+          rootMargin: "-5% 0px -5% 0px", // Smaller margin for more precise detection
         }
       );
-      
+
       observer.observe(ref.current);
       return observer;
     });
 
     return () => {
-      observers.forEach(observer => observer?.disconnect());
+      observers.forEach((observer) => observer?.disconnect());
     };
   }, []);
 
   // Enhanced scroll snapping - snap to nearest slide when scrolling stops
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout;
-    
+
     const handleScroll = () => {
       clearTimeout(scrollTimeout);
-      
+
       scrollTimeout = setTimeout(() => {
         // Find the slide that's most visible
         let mostVisibleSlide = 0;
         let maxVisibility = 0;
-        
+
         slideRefs.forEach((ref, idx) => {
           if (ref.current) {
             const rect = ref.current.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
-            
+
             // Calculate how much of the slide is visible
-            const visibleTop = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+            const visibleTop = Math.max(
+              0,
+              Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0)
+            );
             const visibilityRatio = visibleTop / viewportHeight;
-            
+
             // If this slide is more than 15% visible and more visible than current max
             if (visibilityRatio >= 0.15 && visibilityRatio > maxVisibility) {
               maxVisibility = visibilityRatio;
@@ -109,18 +118,18 @@ export default function Home() {
             }
           }
         });
-        
+
         // Only snap if the difference is significant enough and not already transitioning
         if (mostVisibleSlide !== currentSlide && maxVisibility > 0.3) {
           scrollToSlide(mostVisibleSlide);
         }
       }, 300); // Increased wait time to 300ms for less abrupt snapping
     };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       clearTimeout(scrollTimeout);
     };
   }, [currentSlide, scrollToSlide]);
@@ -128,9 +137,9 @@ export default function Home() {
   return (
     <main
       className="min-h-screen w-full bg-white flex flex-col snap-y snap-proximity overflow-y-auto h-screen pb-32"
-      style={{ 
+      style={{
         scrollBehavior: "smooth",
-        scrollSnapStop: "normal"
+        scrollSnapStop: "normal",
       }}
     >
       {/* Slides with navigation */}
@@ -145,12 +154,14 @@ export default function Home() {
               initial={{ opacity: 0, y: 60, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ margin: "-100px" }}
-              transition={{ 
-                duration: 1.2, 
+              transition={{
+                duration: 1.2,
                 ease: [0.25, 0.25, 0, 1],
-                staggerChildren: 0.15
+                staggerChildren: 0.15,
               }}
-              className={`flex flex-col ${slide.alignment} ${slide.isSpecialSlide ? 'max-w-7xl w-full px-8' : 'max-w-5xl'}`}
+              className={`flex flex-col ${slide.alignment} ${
+                slide.isSpecialSlide ? "max-w-7xl w-full px-8" : "max-w-5xl"
+              }`}
             >
               {slide.content}
               {/* SlideNavButton controls spaced left/right - hidden for special slides */}
@@ -162,7 +173,11 @@ export default function Home() {
                         direction="prev"
                         label={arr[idx - 1].title}
                         onClick={() => scrollToSlide(idx - 1)}
-                        textColor={idx === 1 ? "text-gray-400" : getTextColor(arr[idx - 1].bg)}
+                        textColor={
+                          idx === 1
+                            ? "text-gray-400"
+                            : getTextColor(arr[idx - 1].bg)
+                        }
                       />
                     )}
                   </div>
