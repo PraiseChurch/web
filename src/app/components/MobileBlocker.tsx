@@ -88,7 +88,7 @@ export const MobileBlocker: React.FC<{ children: React.ReactNode }> = ({ childre
             </div>
             
             {/* Contact Links */}
-            <div className="flex justify-center space-x-4 mt-6">
+            <div className="flex justify-center space-x-4 mt-6 font-sans">
               <a 
                 href="mailto:praisechurchwc@gmail.com"
                 className="text-orange-500 hover:text-orange-600 text-sm font-medium"
