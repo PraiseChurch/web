@@ -4,6 +4,7 @@ import React from "react";
 import { Merriweather, Inter } from "next/font/google";
 import { Navbar } from "./modules";
 import { Footer as NewFooter } from "./components/Footer";
+import { MobileNavbar } from "./components/MobileNavbar";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SlideProvider } from "../contexts/SlideContext";
@@ -40,6 +41,7 @@ export default function RootLayout({
         <MobileBlocker>
           <SlideProvider>
             <Navbar />
+            <MobileNavbar />
             {children}
             <NewFooter />
           </SlideProvider>

@@ -7,6 +7,7 @@ export * from "./FluidContainer";
 export * from "./Footer";
 export * from "./Hero";
 export * from "./MobileBlocker";
+export * from "./MobileNavbar";
 export * from "./PageHeader";
 export * from "./ScrollIndicator";
 export * from "./Separator";
