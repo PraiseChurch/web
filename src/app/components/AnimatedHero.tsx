@@ -89,7 +89,7 @@ export const AnimatedHero: React.FC<AnimatedHeroProps> = ({
         ref={containerRef}
         className={`bg-slide-orange text-black h-screen flex items-center overflow-hidden ${className}`}
       >
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto pb-24 lg:pb-0">
           {reference && (
             <motion.div
               ref={referenceRef}

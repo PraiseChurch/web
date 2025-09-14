@@ -97,7 +97,7 @@ export const DarkAnimatedHero: React.FC<DarkAnimatedHeroProps> = ({
         ref={containerRef}
         className={`bg-slide-dark text-white h-screen flex items-center overflow-hidden ${className}`}
       >
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6 pb-24 lg:pb-0">
           {reference && (
             <motion.div
               ref={referenceRef}
