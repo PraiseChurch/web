@@ -20,7 +20,7 @@ export default function About() {
 
   // Set white background for this page
   React.useLayoutEffect(() => {
-    setCurrentSlideBg('bg-white');
+    setCurrentSlideBg("bg-white");
   }, [setCurrentSlideBg]);
   return (
     <div className="min-h-screen bg-gray-50">
@@ -66,7 +66,7 @@ export default function About() {
                   <AccordionContent className="pb-6 pt-2">
                     <Typography
                       variant="small"
-                      className="text-gray-700 leading-relaxed font-thin"
+                      className="text-gray-700 leading-relaxed lg:font-thin font-light text-base font-sans"
                     >
                       {section.subsectionText}
                     </Typography>

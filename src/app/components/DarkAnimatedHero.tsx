@@ -113,8 +113,7 @@ export const DarkAnimatedHero: React.FC<DarkAnimatedHeroProps> = ({
           <Separator className="mb-6 bg-white" delay={0.8} />
           <div
             ref={textRef}
-            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif mb-8"
-            style={{ lineHeight: "1.4" }}
+            className="text-4xl lg:text-5xl xl:text-6xl font-serif lg:mb-8 mb-3 leading-[1] lg:leading-[1.2] xl:leading-[1.4]"
           />
 
           <Separator className="bg-white mb-0" delay={0.8} />

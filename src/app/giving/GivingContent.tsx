@@ -95,10 +95,10 @@ export const GivingContent: React.FC = () => {
                     Mail by Check
                   </Typography>
                 </div>
-                <Typography variant="small" className="text-gray-600">
+                <Typography variant="small" className="text-gray-600 font-sans">
                   Send your contribution to our church office:
                 </Typography>
-                <Typography variant="p" className="text-sm text-gray-900 font-medium">
+                <Typography variant="p" className="text-sm text-gray-900 font-medium font-sans">
                   711 S. Ivy Ave., Unit A, West Covina, CA 91790
                 </Typography>
               </div>
@@ -111,13 +111,13 @@ export const GivingContent: React.FC = () => {
                     Digital Giving
                   </Typography>
                 </div>
-                <Typography variant="small" className="text-gray-600">
+                <Typography variant="small" className="text-gray-600 font-sans">
                   Give securely through CashApp:
                 </Typography>
-                <Typography variant="p" className="text-sm text-gray-900 font-medium mb-4">
+                <Typography variant="p" className="text-sm text-gray-900 font-medium mb-4 font-sans">
                   $PraiseChurch
                 </Typography>
-                <div className="flex justify-end">
+                <div className="flex justify-end font-sans">
                   <CTA 
                     href="https://cash.app/$PraiseChurch" 
                     variant="primary"
