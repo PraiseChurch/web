@@ -8,7 +8,6 @@ import { MobileNavbar } from "./components/MobileNavbar";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SlideProvider } from "../contexts/SlideContext";
-import { MobileBlocker } from "./components/MobileBlocker";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -17,7 +16,7 @@ const merriweather = Merriweather({
   display: "swap",
 });
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
@@ -35,17 +34,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${merriweather.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${merriweather.variable} antialiased`}
+      >
         <Analytics />
         <SpeedInsights />
-        <MobileBlocker>
-          <SlideProvider>
-            <Navbar />
-            <MobileNavbar />
-            {children}
-            <NewFooter />
-          </SlideProvider>
-        </MobileBlocker>
+        <SlideProvider>
+          <Navbar />
+          <MobileNavbar />
+          {children}
+          <NewFooter />
+        </SlideProvider>
       </body>
     </html>
   );
