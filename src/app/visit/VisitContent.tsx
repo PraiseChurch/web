@@ -49,8 +49,8 @@ export const VisitContent: React.FC = () => {
   return (
     <div className="h-screen overflow-y-scroll snap-y snap-proximity">
       {/* Slide 1: Animated Hero */}
-      <section className="h-screen snap-start">
-        <div className="animated-hero">
+      <section className="h-screen md:h-screen snap-start pt-16 md:pt-0">
+        <div className="animated-hero h-full">
           <DarkAnimatedHero
             reference="Matthew 28:19-20"
             text="Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit."
@@ -60,7 +60,7 @@ export const VisitContent: React.FC = () => {
       </section>
 
       {/* Slide 2: Visit Information */}
-      <section className="visit-info-section h-screen snap-start flex items-center justify-center bg-gray-50">
+      <section className="visit-info-section min-h-screen md:h-screen snap-start flex items-center justify-center bg-gray-50 pt-16 md:pt-0">
         <FluidContainer>
           <div className="max-w-4xl mx-auto">
             {/* Page Header */}
@@ -90,7 +90,7 @@ export const VisitContent: React.FC = () => {
                 What to Expect
               </Typography>
 
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid gap-6 md:grid-cols-2 font-sans">
                 {/* Service Duration */}
                 <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
                   <div className="flex items-center gap-3 mb-4">
