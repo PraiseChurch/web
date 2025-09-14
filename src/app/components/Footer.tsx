@@ -45,12 +45,16 @@ export function Footer() {
     {
       title: "Get involved with our",
       subtitle: "different ministries",
+      mobileTitle: "Our",
+      mobileSubtitle: "ministries",
       cta: "Our Ministries",
       href: "/ministries",
     },
     {
       title: "Find fellowship with",
       subtitle: "our community",
+      mobileTitle: "Fellowship",
+      mobileSubtitle: "",
       cta: "Upcoming Events",
       href: "/events",
     },
@@ -59,7 +63,49 @@ export function Footer() {
   return (
     <footer className={`fixed bottom-0 left-0 right-0 ${footerStyles.bg} backdrop-blur-lg border-t ${footerStyles.border} z-50 transition-all duration-500`}>
       <div className="max-w-7xl mx-auto">
-        <div className={`grid grid-cols-1 md:grid-cols-3 md:divide-x ${footerStyles.border.replace('border-', 'md:divide-')} h-full`}>
+        {/* Mobile Layout */}
+        <div className="block md:hidden">
+          <div className="flex divide-x divide-gray-300/30">
+            {footerItems.map((item, index) => (
+              <motion.div
+                key={item.cta}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+                className="group flex-1 flex items-center justify-between py-3 px-2"
+              >
+                <div className="flex-1 pr-2">
+                  <p className={`text-xs ${footerStyles.subtext} font-serif leading-tight`}>
+                    {item.mobileTitle || item.title}
+                  </p>
+                  {(item.mobileSubtitle !== undefined ? item.mobileSubtitle : item.subtitle) && (
+                    <p className={`text-xs ${footerStyles.subtext} font-serif leading-tight`}>
+                      {item.mobileSubtitle !== undefined ? item.mobileSubtitle : item.subtitle}
+                    </p>
+                  )}
+                </div>
+
+                <CTA
+                  href={item.href}
+                  className={`${
+                    footerStyles.text === 'text-white' 
+                      ? 'text-orange-500 hover:text-orange-700' 
+                      : 'text-orange-700 hover:text-orange-900'
+                  }`}
+                >
+                  <ArrowRight size={12} />
+                </CTA>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className={`hidden md:grid grid-cols-3 md:divide-x ${footerStyles.border.replace('border-', 'md:divide-')} h-full`}>
           {footerItems.map((item, index) => (
             <motion.div
               key={item.cta}
