@@ -44,7 +44,6 @@ export const Navbar = () => {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { label: "Stream", href: "/stream" },
     { label: "Visit", href: "/visit" },
     { label: "Giving", href: "/giving" },
   ];

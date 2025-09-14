@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 import Image from "next/image";
 import type { Metadata } from "next";
 import {
@@ -7,12 +10,16 @@ import {
   TextSubsection,
   Typography,
 } from "../components";
+import { useSlideContext } from "../../contexts/SlideContext";
 
-export const metadata: Metadata = {
-  title: "Visit",
-  description: "Visit our vibrant Christian community here at Praise Church West Covina and learn about what a typical service is like"
-}
+// Note: metadata export moved to a separate file due to client component conversion
 export default function Visit() {
+  const { setCurrentSlideBg } = useSlideContext();
+
+  // Set white background for this page
+  React.useLayoutEffect(() => {
+    setCurrentSlideBg('bg-white');
+  }, [setCurrentSlideBg]);
   return (
     <div>
       <Hero title="Visit" imgSrc="/hero/visit-hero.jpeg" position="center" postTitle="&quot;Go therefore and make disciples of all nations...&quot;" />

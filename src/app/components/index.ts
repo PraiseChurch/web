@@ -1,4 +1,6 @@
+export * from "./AnimatedHero";
 export * from "./Button";
+export * from "./CTA";
 export * from "./Divider";
 export * from "./FluidContainer";
 export * from "./Footer";

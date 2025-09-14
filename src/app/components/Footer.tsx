@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useSlideContext } from "../../contexts/SlideContext";
+import { CTA } from "./CTA";
 
 export function Footer() {
   const { currentSlideBg } = useSlideContext();
@@ -37,7 +38,7 @@ export function Footer() {
   const footerItems = [
     {
       title: "Sundays at 10am",
-      subtitle: "Shadow Oak Park, CA",
+      subtitle: "718 S Azusa Avenue, CA",
       cta: "Visit Us",
       href: "/visit",
     },
@@ -80,21 +81,17 @@ export function Footer() {
                 </p>
               </div>
 
-              <motion.a
+              <CTA
                 href={item.href}
-                className={`inline-flex items-center gap-2 font-medium text-sm transition-colors duration-200 ml-4 ${
+                trailingDecorator={<ArrowRight size={14} />}
+                className={`ml-4 ${
                   footerStyles.text === 'text-white' 
-                    ? 'text-orange-300 hover:text-orange-100' 
-                    : 'text-blue-700 hover:text-blue-900'
+                    ? 'text-orange-500 hover:text-orange-700' 
+                    : 'text-orange-700 hover:text-orange-900'
                 }`}
-                whileHover={{ x: 4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <span>{item.cta}</span>
-                <motion.span className="group-hover:translate-x-1 transition-transform duration-200">
-                  <ArrowRight size={14} />
-                </motion.span>
-              </motion.a>
+                {item.cta}
+              </CTA>
             </motion.div>
           ))}
         </div>

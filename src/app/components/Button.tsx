@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Typography } from "../components";
+import { Typography } from "./Typography";
 
 interface ButtonProps {
   href?: string;
