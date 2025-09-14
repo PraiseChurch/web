@@ -10,7 +10,7 @@ import { Separator } from "./Separator";
 
 export const MobileNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { currentSlideBg } = useSlideContext();
+  const { currentSlideBg, setCurrentSlide } = useSlideContext();
   const pathname = usePathname();
 
   // Get appropriate navbar styles based on current slide
@@ -42,6 +42,25 @@ export const MobileNavbar = () => {
 
   const navStyles = getNavbarStyles(currentSlideBg);
 
+  const navigateToFirstSlide = () => {
+    if (pathname !== '/') {
+      // If not on homepage, navigate there first
+      window.location.href = '/';
+    } else {
+      // If already on homepage, find the first slide section and scroll to it
+      const firstSlideSection = document.querySelector('section.min-h-screen:first-of-type');
+      
+      if (firstSlideSection) {
+        firstSlideSection.scrollIntoView({ behavior: 'smooth' });
+        setCurrentSlide(0);
+      } else {
+        // Fallback to scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setCurrentSlide(0);
+      }
+    }
+  };
+
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
@@ -55,7 +74,7 @@ export const MobileNavbar = () => {
       <nav
         className={`md:hidden fixed top-0 left-0 right-0 ${navStyles.bg} backdrop-blur-lg border-b ${navStyles.border} h-16 px-4 flex items-center justify-between z-50 font-sans transition-all duration-500`}
       >
-        <Link href="/" className="flex items-center">
+        <button onClick={navigateToFirstSlide} className="flex items-center">
           <Image
             src={navStyles.logo}
             alt="Praise Church West Covina logo"
@@ -64,7 +83,7 @@ export const MobileNavbar = () => {
             priority
             className="w-8 h-auto"
           />
-        </Link>
+        </button>
 
         {/* Mobile Menu Button */}
         <motion.button
