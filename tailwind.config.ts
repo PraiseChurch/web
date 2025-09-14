@@ -69,10 +69,12 @@ const config: Config = {
   		},
   		fontFamily: {
   			serif: [
+  				'var(--font-merriweather)',
   				'Merriweather',
   				'serif'
   			],
   			sans: [
+  				'var(--font-inter)',
   				'Bricolage Grotesque',
   				'sans-serif'
   			]

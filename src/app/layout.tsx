@@ -1,22 +1,22 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import React from "react";
-import { Arvo, Inter } from "next/font/google";
+import { Merriweather, Inter } from "next/font/google";
 import { Navbar } from "./modules";
 import { Footer as NewFooter } from "./components/Footer";
+import { MobileNavbar } from "./components/MobileNavbar";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SlideProvider } from "../contexts/SlideContext";
-import { MobileBlocker } from "./components/MobileBlocker";
 
-const arvo = Arvo({
-  weight: ["400", "700"],
+const merriweather = Merriweather({
+  weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
-  variable: "--font-arvo",
+  variable: "--font-merriweather",
   display: "swap",
 });
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
@@ -34,16 +34,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${arvo.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${merriweather.variable} antialiased`}
+      >
         <Analytics />
         <SpeedInsights />
-        <MobileBlocker>
-          <SlideProvider>
-            <Navbar />
-            {children}
-            <NewFooter />
-          </SlideProvider>
-        </MobileBlocker>
+        <SlideProvider>
+          <Navbar />
+          <MobileNavbar />
+          {children}
+          <NewFooter />
+        </SlideProvider>
       </body>
     </html>
   );

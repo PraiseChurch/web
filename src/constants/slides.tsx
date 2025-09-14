@@ -64,12 +64,13 @@ export const slideData = (
     content: (
       <>
         <motion.h2
-          className="text-5xl text-left text-white"
+          className="text-4xl md:text-5xl text-center md:text-left text-white"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.25, 0, 1] }}
         >
-          <span className="font-thin">Our Mission</span>{" "}
+          <span className="font-thin">Our Mission</span>
+          <br className="md:hidden" />{" "}
           <span className="font-bold italic">of Hope</span>
         </motion.h2>
         <Separator
@@ -78,7 +79,7 @@ export const slideData = (
           slideActive={currentSlide === 1}
         />
         <motion.p
-          className="text-xl text-white max-w-xl lg:max-w-7xl lg:min-w-4xl text-left"
+          className="text-xl md:text-xl text-white max-w-xl lg:max-w-7xl lg:min-w-4xl text-center md:text-left"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -89,19 +90,20 @@ export const slideData = (
     ),
     bg: "bg-slide-dark",
     font: "font-serif",
-    alignment: "items-start",
+    alignment: "items-center md:items-start",
   },
   {
     title: slideTitles[2],
     content: (
       <>
         <motion.h2
-          className="text-5xl text-left text-slide-dark"
+          className="text-4xl md:text-5xl text-center md:text-left text-slide-dark"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.25, 0, 1] }}
         >
-          <span className="font-thin">Our Motivation</span>{" "}
+          <span className="font-thin">Our Motivation</span>
+          <br className="md:hidden" />{" "}
           <span className="font-bold italic">by Faith</span>
         </motion.h2>
         <Separator
@@ -110,7 +112,7 @@ export const slideData = (
           slideActive={currentSlide === 2}
         />
         <motion.p
-          className="text-xl text-slide-dark max-w-xl lg:max-w-7xl lg:min-w-4xl text-left"
+          className="text-xl md:text-xl text-slide-dark max-w-xl lg:max-w-7xl lg:min-w-4xl text-center md:text-left"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -122,19 +124,20 @@ export const slideData = (
     ),
     bg: "bg-slide-orange",
     font: "font-serif",
-    alignment: "items-start",
+    alignment: "items-center md:items-start",
   },
   {
     title: slideTitles[3],
     content: (
       <>
         <motion.h2
-          className="text-5xl text-left"
+          className="text-4xl md:text-5xl text-center md:text-left"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.25, 0, 1] }}
         >
-          <span className="font-thin">Our Means</span>{" "}
+          <span className="font-thin">Our Means</span>
+          <br className="md:hidden" />{" "}
           <span className="font-bold italic">through Love</span>
         </motion.h2>
         <Separator
@@ -143,7 +146,7 @@ export const slideData = (
           slideActive={currentSlide === 3}
         />
         <motion.p
-          className="text-xl text-gray-700 max-w-xl lg:max-w-7xl lg:min-w-4xl text-left"
+          className="text-xl md:text-xl text-gray-700 max-w-xl lg:max-w-7xl lg:min-w-4xl text-center md:text-left"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -154,6 +157,6 @@ export const slideData = (
     ),
     bg: "bg-white",
     font: "font-serif",
-    alignment: "items-start",
+    alignment: "items-center md:items-start",
   },
 ];

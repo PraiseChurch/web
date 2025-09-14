@@ -105,8 +105,7 @@ export const AnimatedHero: React.FC<AnimatedHeroProps> = ({
           <Separator className="mb-6 bg-black" delay={0.8} />
           <div
             ref={textRef}
-            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif mb-8"
-            style={{ lineHeight: "1.4" }}
+            className="text-4xl lg:text-5xl xl:text-6xl font-serif lg:mb-8 mb-3 leading-[1] lg:leading-[1.2] xl:leading-[1.4]"
           />
 
           <Separator className="bg-black mb-0" delay={0.8} />
@@ -117,7 +116,7 @@ export const AnimatedHero: React.FC<AnimatedHeroProps> = ({
               className="group flex items-center text-black"
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <motion.div 
+              <motion.div
                 className="flex items-center px-4 py-2 bg-black text-white gap-1"
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}

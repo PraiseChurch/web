@@ -160,13 +160,44 @@ export default function Home() {
                 staggerChildren: 0.15,
               }}
               className={`flex flex-col ${slide.alignment} ${
-                slide.isSpecialSlide ? "max-w-7xl w-full px-8" : "max-w-5xl"
+                slide.isSpecialSlide ? "max-w-7xl w-full px-8" : "max-w-5xl px-6 md:px-0"
               }`}
             >
+              {/* Previous slide button - above content (mobile only) */}
+              {!slide.isSpecialSlide && idx > 0 && (
+                <div className="mb-8 md:hidden flex justify-center">
+                  <SlideNavButton
+                    direction="prev"
+                    label={arr[idx - 1].title}
+                    onClick={() => scrollToSlide(idx - 1)}
+                    textColor={
+                      idx === 1
+                        ? "text-gray-400"
+                        : getTextColor(arr[idx - 1].bg)
+                    }
+                    isMobile={true}
+                  />
+                </div>
+              )}
+              
               {slide.content}
-              {/* SlideNavButton controls spaced left/right - hidden for special slides */}
+              
+              {/* Next slide button - below content (mobile only) */}
+              {!slide.isSpecialSlide && idx < arr.length - 1 && (
+                <div className="mt-8 md:hidden flex justify-center">
+                  <SlideNavButton
+                    direction="next"
+                    label={arr[idx + 1].title}
+                    onClick={() => scrollToSlide(idx + 1)}
+                    textColor={getTextColor(arr[idx + 1].bg)}
+                    isMobile={true}
+                  />
+                </div>
+              )}
+              
+              {/* Desktop navigation - left/right layout */}
               {!slide.isSpecialSlide && (
-                <div className="flex justify-between items-center w-full mt-12">
+                <div className="hidden md:flex justify-between items-center w-full mt-12">
                   <div className="flex text-left">
                     {idx > 0 && (
                       <SlideNavButton
