@@ -1,11 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import React from "react";
-import { Arvo, Inter, Lato } from "next/font/google";
-import { Footer, Navbar } from "./modules";
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-
+import { Arvo, Inter } from "next/font/google";
+import { Navbar } from "./modules";
+import { Footer as NewFooter } from "./components/Footer";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SlideProvider } from "../contexts/SlideContext";
 
 const arvo = Arvo({
   weight: ["400", "700"],
@@ -14,12 +15,6 @@ const arvo = Arvo({
   display: "swap",
 });
 
-const lato = Lato({
-  weight: ["100", "300", "400", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font-lato",
-  display: "swap",
-});
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -33,14 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.className} ${arvo.variable} ${lato.variable} font-sans`}
-    >
+    <html lang="en" className="font-sans">
       <body>
-        <Navbar />
-        <div className="flex flex-col w-screen">{children}</div>
-        <Footer />
+        <SlideProvider>
+          <Navbar />
+          <div className="flex flex-col w-screen">{children}</div>
+          <NewFooter />
+        </SlideProvider>
         <Analytics />
         <SpeedInsights />
       </body>
