@@ -116,7 +116,7 @@ export function Footer() {
                 delay: index * 0.1,
                 ease: "easeOut",
               }}
-              className={`group flex items-center justify-between h-full p-4`}
+              className={`group flex items-center justify-between h-full p-4 font-sans`}
             >
               <div>
                 <p className={`text-sm ${footerStyles.subtext} font-serif leading-relaxed`}>

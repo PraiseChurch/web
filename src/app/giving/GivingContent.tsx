@@ -49,7 +49,7 @@ export const GivingContent: React.FC = () => {
   return (
     <div className="h-screen overflow-y-scroll snap-y snap-proximity">
       {/* Slide 1: Animated Hero */}
-      <section className="h-screen snap-start">
+      <section className="h-screen snap-start pt-16 md:pt-0">
         <div className="animated-hero">
           <AnimatedHero
             reference="Luke 6:38"
@@ -59,7 +59,7 @@ export const GivingContent: React.FC = () => {
       </section>
 
       {/* Slide 2: Giving Methods */}
-      <section className="giving-methods-section h-screen snap-start flex items-center justify-center bg-gray-50">
+      <section className="giving-methods-section h-screen snap-start flex items-center justify-center bg-gray-50 pt-16 md:pt-0">
         <FluidContainer>
           <div className="max-w-4xl mx-auto">
           {/* Page Header */}

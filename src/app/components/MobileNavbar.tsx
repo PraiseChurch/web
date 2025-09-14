@@ -18,14 +18,14 @@ export const MobileNavbar = () => {
     switch (slideBg) {
       case "bg-slide-dark":
         return {
-          bg: "bg-slide-dark/70",
+          bg: "bg-slide-dark",
           border: "border-gray-600/50",
           text: "text-white",
           logo: "/tulip-logo-white.png",
         };
       case "bg-slide-orange":
         return {
-          bg: "bg-slide-orange/70",
+          bg: "bg-slide-orange",
           border: "border-orange-300/50",
           text: "text-white",
           logo: "/tulip-logo-white.png",
@@ -132,7 +132,7 @@ export const MobileNavbar = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className={`fixed inset-0 z-[110] flex flex-col justify-center p-6 md:hidden ${
-                navStyles.text === "text-white" ? "bg-gray-900" : "bg-white"
+                navStyles.text === "text-white" ? "bg-neutral-900" : "bg-white"
               }`}
             >
               {/* Close button */}
