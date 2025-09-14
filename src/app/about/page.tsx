@@ -1,25 +1,82 @@
-import React from "react";
-import type { Metadata } from "next";
-import { GenericPage } from "../modules";
-import aboutData from "../../data/about.json";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Learn more about Praise Church West Covina and what we believe in"
-}
+import React from "react";
+import { motion } from "framer-motion";
+import { Shield } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
+import { FluidContainer } from "../components/FluidContainer";
+import { Typography } from "@/components/ui/typography";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import aboutData from "../../data/about.json";
+import { useSlideContext } from "../../contexts/SlideContext";
 
 export default function About() {
+  const { setCurrentSlideBg } = useSlideContext();
+
+  // Set white background for this page
+  React.useLayoutEffect(() => {
+    setCurrentSlideBg('bg-white');
+  }, [setCurrentSlideBg]);
   return (
-    <div>
-      <GenericPage
-        heroImgSrc="/hero/bible-about-hero.jpeg"
-        heroPostTitle="&quot;In Him we have redemption through his blood...&quot;"
-        heroTitle="About"
-        position="center"
-        subsectionArray={aboutData.sections}
-        text="In him we have redemption through his blood, the forgiveness of our trespasses, according to the riches of his grace."
-        verse="Ephesians 1:7"
-      />
+    <div className="min-h-screen bg-gray-50">
+      <FluidContainer>
+        <div className="py-16">
+          {/* Page Header */}
+          <motion.div
+            className="text-center min-h-[50vh] flex flex-col justify-center"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <PageHeader
+              icon={<Shield className="w-12 h-12 text-orange-500" />}
+              title="Doctrinal Statement"
+              subtitle="Our doctrinal statement reflects our commitment to historic Baptist principles and biblical orthodoxy. 
+              Each section represents core beliefs that guide our church family and ministry."
+            />
+          </motion.div>
+
+          {/* Doctrinal Statement Accordion */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-4xl mx-auto"
+          >
+            <Accordion type="single" collapsible className="space-y-4">
+              {aboutData.sections.slice(1).map((section, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="border border-gray-200 rounded-lg px-6 bg-white shadow-sm hover:shadow-md transition-shadow duration-200"
+                >
+                  <AccordionTrigger className="text-left hover:no-underline pt-6">
+                    <Typography
+                      variant="h4"
+                      className="text-gray-900 font-serif text-lg"
+                    >
+                      {section.subsectionTitle}
+                    </Typography>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6 pt-2">
+                    <Typography
+                      variant="small"
+                      className="text-gray-700 leading-relaxed font-thin"
+                    >
+                      {section.subsectionText}
+                    </Typography>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+        </div>
+      </FluidContainer>
     </div>
   );
 }

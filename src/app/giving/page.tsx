@@ -1,42 +1,13 @@
+import React from "react";
 import type { Metadata } from "next";
-import {
-  Button,
-  Divider,
-  FluidContainer,
-  Hero,
-  TextSubsection,
-} from "../components";
+import { GivingContent } from "./GivingContent";
 
 export const metadata: Metadata = {
   title: "Giving",
-  description: "Discover the significance of tithing in our community and learn how your contributions support our mission in West Covina and beyond"
-}
+  description:
+    "Discover the significance of tithing in our community and learn how your contributions support our mission in West Covina and beyond",
+};
+
 export default function Giving() {
-  return (
-    <div>
-      <Hero title="Giving" imgSrc="/hero/harvest-giving-hero.jpeg" position="center" postTitle="&quot;... give, and it will be given to you.&quot;" />
-      <FluidContainer>
-        <TextSubsection title="Luke 6:38">
-          <sup>38</sup> &quot;...give, and it will be given to you. Good measure, pressed
-          down, shaken together, running over, will be put into your lap. For
-          with the measure you use it will be measured back to you.&quot;
-        </TextSubsection>
-        <Divider />
-        <TextSubsection title="Why Do We Give?">
-          Giving is an expression of obedience, gratitude, trust, and increasing joy. If you want to partner with us in the work God is doing in West Covina
-          and beyond, please consider giving, by faith, through any of the avenues listed below. Thank you for your
-          generosity.
-        </TextSubsection>
-        <TextSubsection title="Mail By Check">
-          711 S. Ivy Ave., Unit A
-        </TextSubsection>
-        <TextSubsection title="Secure Giving Via CashApp">
-          CashApp Account: $PraiseChurch
-        </TextSubsection>
-        <div className="mx-auto flex justify-center">
-          <Button href="https://cash.app/$PraiseChurch" title="Give" />
-        </div>
-      </FluidContainer>
-    </div>
-  );
+  return <GivingContent />;
 }
