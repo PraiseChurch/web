@@ -37,9 +37,9 @@ export function Footer() {
   const footerStyles = getFooterStyles(currentSlideBg);
   const footerItems = [
     {
-      title: "Sundays at 10am",
+      title: "Sundays at 10:30 AM",
       subtitle: "718 S Azusa Avenue, CA",
-      mobileTitle: "Sundays at 10am",
+      mobileTitle: "Sundays at 10:30 AM",
       mobileSubtitle: "718 S Azusa Ave, CA",
       cta: "Visit Us",
       href: "/visit",
