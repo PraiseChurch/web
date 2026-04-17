@@ -37,7 +37,9 @@ export const AnimatedHero: React.FC<AnimatedHeroProps> = ({
     const words = text.split(" ");
     const wordElements: HTMLSpanElement[] = [];
 
-    textRef.current.innerHTML = "";
+    while (textRef.current.firstChild) {
+      textRef.current.removeChild(textRef.current.firstChild);
+    }
 
     words.forEach((word) => {
       const wordSpan = document.createElement("span");
@@ -73,7 +75,7 @@ export const AnimatedHero: React.FC<AnimatedHeroProps> = ({
           duration: 0.6,
           ease: "power2.out",
         },
-        "-=0.3"
+        "-=0.3",
       );
     }
 

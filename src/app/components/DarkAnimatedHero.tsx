@@ -45,7 +45,9 @@ export const DarkAnimatedHero: React.FC<DarkAnimatedHeroProps> = ({
     const words = text.split(" ");
     const wordElements: HTMLSpanElement[] = [];
 
-    textRef.current.innerHTML = "";
+    while (textRef.current.firstChild) {
+      textRef.current.removeChild(textRef.current.firstChild);
+    }
 
     words.forEach((word) => {
       const wordSpan = document.createElement("span");
@@ -81,7 +83,7 @@ export const DarkAnimatedHero: React.FC<DarkAnimatedHeroProps> = ({
           duration: 0.6,
           ease: "power2.out",
         },
-        "-=0.3"
+        "-=0.3",
       );
     }
 
