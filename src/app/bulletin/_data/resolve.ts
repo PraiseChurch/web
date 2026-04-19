@@ -37,7 +37,6 @@ export function resolveBulletin(
   return {
     date: bulletin.date,
     church: config.church,
-    welcomeLine: config.church.welcomeLine,
     missionStatement: config.missionStatement,
     isCommunion: bulletin.isCommunion,
     worshipSteps,

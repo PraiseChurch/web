@@ -2,9 +2,8 @@ export type ScriptureFragment =
   | { kind: "verse"; number: string }
   | { kind: "text"; content: string };
 
-const VERSE_MARKER = /\{(\d+)\}/g;
-
 export function parseScripturePassage(passage: string): ScriptureFragment[] {
+  const VERSE_MARKER = /\{(\d+)\}/g;
   const fragments: ScriptureFragment[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;

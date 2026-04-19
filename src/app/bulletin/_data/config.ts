@@ -68,6 +68,6 @@ const CONFIG: BulletinConfig = {
   ],
 };
 
-export function getConfig(): BulletinConfig {
+export function getConfig(): Readonly<BulletinConfig> {
   return CONFIG;
 }

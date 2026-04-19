@@ -28,16 +28,26 @@ const BULLETINS: Bulletin[] = [
   },
 ];
 
+const CHURCH_TZ = "America/Los_Angeles";
+
 function sortByDateDesc(a: Bulletin, b: Bulletin): number {
   return b.date.localeCompare(a.date);
 }
 
-function isPublishedOnOrBefore(bulletin: Bulletin, isoDate: string): boolean {
+function isPublishedAndDateReached(
+  bulletin: Bulletin,
+  isoDate: string,
+): boolean {
   return bulletin.publishedAt !== null && bulletin.date <= isoDate;
 }
 
 function todayIso(): string {
-  return new Date().toISOString().slice(0, 10);
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: CHURCH_TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
 }
 
 export function listBulletins(): Bulletin[] {
@@ -46,7 +56,7 @@ export function listBulletins(): Bulletin[] {
 
 export function listPublished(): Bulletin[] {
   const today = todayIso();
-  return listBulletins().filter((b) => isPublishedOnOrBefore(b, today));
+  return listBulletins().filter((b) => isPublishedAndDateReached(b, today));
 }
 
 export function getLatest(): Bulletin | null {
@@ -54,7 +64,9 @@ export function getLatest(): Bulletin | null {
 }
 
 export function getByDate(date: string): Bulletin | null {
-  return BULLETINS.find((b) => b.date === date) ?? null;
+  return (
+    BULLETINS.find((b) => b.date === date && b.publishedAt !== null) ?? null
+  );
 }
 
 export function getBySlug(slug: string): Bulletin | null {

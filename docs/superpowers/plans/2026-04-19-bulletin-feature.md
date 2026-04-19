@@ -136,7 +136,6 @@ export type ResolvedWorshipStep = {
 export type ResolvedBulletin = {
   date: string;
   church: BulletinConfig["church"];
-  welcomeLine: string;
   missionStatement: string;
   isCommunion: boolean;
   worshipSteps: ResolvedWorshipStep[];
@@ -489,7 +488,6 @@ export function resolveBulletin(bulletin: Bulletin, config: BulletinConfig): Res
   return {
     date: bulletin.date,
     church: config.church,
-    welcomeLine: config.church.welcomeLine,
     missionStatement: config.missionStatement,
     isCommunion: bulletin.isCommunion,
     worshipSteps,
@@ -595,13 +593,13 @@ import React from "react";
 import type { ResolvedBulletin } from "../../types";
 import { formatBulletinDate } from "../format";
 
-type Props = { resolved: Pick<ResolvedBulletin, "date" | "church" | "welcomeLine"> };
+type Props = { resolved: Pick<ResolvedBulletin, "date" | "church"> };
 
 export const ViewHeader: React.FC<Props> = ({ resolved }) => (
   <header className="border-b border-gray-200 pb-6">
     <p className="text-slide-orange italic text-sm font-serif">{formatBulletinDate(resolved.date)}</p>
     <h1 className="mt-2 text-3xl font-serif font-bold text-black">{resolved.church.name}</h1>
-    <p className="mt-3 text-slide-orange italic text-sm font-serif">{resolved.welcomeLine}</p>
+    <p className="mt-3 text-slide-orange italic text-sm font-serif">{resolved.church.welcomeLine}</p>
     <p className="mt-1 text-sm text-gray-600 font-sans">{resolved.church.address}</p>
   </header>
 );
@@ -1336,7 +1334,7 @@ import type { ResolvedBulletin } from "../../types";
 import { formatBulletinDate } from "../../_view/format";
 import { styles } from "../styles";
 
-type Props = { resolved: Pick<ResolvedBulletin, "date" | "church" | "welcomeLine"> };
+type Props = { resolved: Pick<ResolvedBulletin, "date" | "church"> };
 
 export const Header: React.FC<Props> = ({ resolved }) => (
   <View style={styles.header}>
@@ -1345,7 +1343,7 @@ export const Header: React.FC<Props> = ({ resolved }) => (
       <Text style={styles.headerChurch}>{resolved.church.name}</Text>
     </View>
     <View style={styles.headerRight}>
-      <Text style={styles.headerWelcome}>{resolved.welcomeLine}</Text>
+      <Text style={styles.headerWelcome}>{resolved.church.welcomeLine}</Text>
       <Text style={styles.headerAddress}>{resolved.church.address}</Text>
     </View>
   </View>

@@ -71,7 +71,6 @@ export type ResolvedWorshipStep = {
 export type ResolvedBulletin = {
   date: string;
   church: BulletinConfig["church"];
-  welcomeLine: string;
   missionStatement: string;
   isCommunion: boolean;
   worshipSteps: ResolvedWorshipStep[];
