@@ -44,9 +44,8 @@ export const styles = StyleSheet.create({
   },
   headerWelcome: {
     color: colors.orange,
-    fontStyle: "italic",
     fontSize: 10,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Helvetica-BoldOblique",
   },
   headerAddress: {
     marginTop: 3,
