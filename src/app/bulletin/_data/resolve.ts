@@ -3,8 +3,10 @@ import type {
   BulletinConfig,
   ResolvedBulletin,
   ResolvedWorshipStep,
+  StoredBulletin,
 } from "../types";
 import { eventsWithinDays } from "./events";
+import { getConfig } from "./config";
 
 const EVENTS_WINDOW_DAYS = 30;
 const PREACHING_STEP_ID = "preaching";
@@ -52,4 +54,17 @@ export function resolveBulletin(
     ),
     midweekMinistries: config.midweekMinistries,
   };
+}
+
+// Helper: resolves a StoredBulletin using its snapshot for published
+// bulletins, falling back to live config for drafts. Wraps the common
+// call pattern so consumers don't have to handle both cases manually.
+export async function resolveStoredBulletin(
+  stored: StoredBulletin,
+): Promise<ResolvedBulletin> {
+  if (stored.configSnapshot) {
+    return resolveBulletin(stored.bulletin, stored.configSnapshot);
+  }
+  const liveConfig = await getConfig();
+  return resolveBulletin(stored.bulletin, liveConfig);
 }
