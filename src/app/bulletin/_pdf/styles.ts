@@ -200,10 +200,40 @@ export const styles = StyleSheet.create({
     fontSize: 7,
     verticalAlign: "super",
   },
+  rightColumn: {
+    flex: 1,
+    flexDirection: "column",
+  },
+  notesContainer: {
+    marginTop: "auto",
+  },
+  notesHeading: {
+    fontSize: 10,
+    fontFamily: SANS,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: 1.5,
+    marginBottom: 8,
+  },
   notesLine: {
     marginTop: 14,
     borderBottomWidth: 0.5,
     borderBottomColor: colors.lightGray,
+  },
+  orderItemFlag: {
+    position: "relative",
+    paddingTop: 6,
+    paddingBottom: 6,
+    paddingLeft: 6,
+    paddingRight: 14,
+    marginLeft: -6,
+  },
+  orderItemFlagBg: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   sectionDivider: {
     marginTop: 18,
