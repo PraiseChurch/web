@@ -38,7 +38,7 @@ export async function GET(_request: Request, { params }: RouteContext) {
     status: 200,
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="bulletin-${bulletin.date}.pdf"`,
+      "Content-Disposition": `inline; filename="bulletin-${bulletin.date}.pdf"`,
       "Cache-Control": "no-store",
     },
   });

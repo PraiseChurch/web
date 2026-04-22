@@ -10,9 +10,11 @@ export const DownloadPdfLink: React.FC<Props> = ({ date, sermonTitle }) => {
     <div className="py-6 border-t border-gray-200 text-center">
       <Link
         href={`/bulletin/${slug}/pdf`}
+        target="_blank"
+        rel="noopener"
         className="inline-block text-sm font-sans font-bold uppercase tracking-widest text-slide-orange underline"
       >
-        Download printable PDF
+        View printable PDF
       </Link>
     </div>
   );
