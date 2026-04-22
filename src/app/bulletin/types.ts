@@ -24,6 +24,12 @@ export type MidweekDay = {
   meetings: MidweekMeeting[];
 };
 
+export type BulletinConfigEnums = {
+  // Key names match the bulletin field each enum validates.
+  // BulletinConfigEnums.eventCategory validates UpcomingEvent.category.
+  eventCategory: string[];
+};
+
 export type BulletinConfig = {
   church: {
     name: string;
@@ -33,6 +39,7 @@ export type BulletinConfig = {
   missionStatement: string;
   worshipSteps: WorshipStepConfig[];
   midweekMinistries: MidweekDay[];
+  enums: BulletinConfigEnums;
 };
 
 export type UpcomingEvent = {
@@ -78,4 +85,19 @@ export type ResolvedBulletin = {
   discovery: Discovery;
   upcomingEvents: UpcomingEvent[];
   midweekMinistries: MidweekDay[];
+};
+
+export type StoredBulletin = {
+  bulletin: Bulletin;
+  configSnapshot?: BulletinConfig;
+  schemaVersion: number;
+  renderVersion: number;
+  publishedAt: string | null;
+};
+
+export type BulletinSummary = {
+  date: string;
+  sermonTitle: string;
+  scriptureReference: string;
+  publishedAt: string | null;
 };

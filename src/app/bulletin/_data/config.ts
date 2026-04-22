@@ -66,6 +66,9 @@ const CONFIG: BulletinConfig = {
       ],
     },
   ],
+  enums: {
+    eventCategory: ["WOMEN", "MEN", "COUPLES", "YOUTH", "GENERAL"],
+  },
 };
 
 export function getConfig(): Readonly<BulletinConfig> {
