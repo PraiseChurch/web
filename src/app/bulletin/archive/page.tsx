@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description: "Past weekly bulletins from Praise Church West Covina.",
 };
 
-export default function BulletinArchivePage() {
-  const bulletins = listPublished();
+export default async function BulletinArchivePage() {
+  const bulletins = await listPublished();
   return (
     <main className="max-w-2xl mx-auto px-4 py-8">
       <header className="border-b border-gray-200 pb-4">
@@ -29,7 +29,7 @@ export default function BulletinArchivePage() {
       ) : (
         <ul className="mt-6 divide-y divide-gray-200">
           {bulletins.map((b) => {
-            const slug = buildSlug(b.date, b.sermon.title);
+            const slug = buildSlug(b.date, b.sermonTitle);
             return (
               <li key={b.date} className="py-4">
                 <Link
@@ -40,10 +40,10 @@ export default function BulletinArchivePage() {
                     {formatBulletinDate(b.date)}
                   </p>
                   <p className="mt-1 font-serif font-bold text-black">
-                    {b.sermon.title}
+                    {b.sermonTitle}
                   </p>
                   <p className="text-sm italic text-gray-600 font-sans">
-                    {b.sermon.scriptureReference}
+                    {b.scriptureReference}
                   </p>
                 </Link>
               </li>

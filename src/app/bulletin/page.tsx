@@ -3,17 +3,16 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { BulletinView } from "./_view/BulletinView";
 import { getLatest } from "./_data/bulletins";
-import { getConfig } from "./_data/config";
-import { resolveBulletin } from "./_data/resolve";
+import { resolveStoredBulletin } from "./_data/resolve";
 
 export const metadata: Metadata = {
   title: "Weekly Bulletin | Praise Church West Covina",
   description: "This week's bulletin at Praise Church West Covina.",
 };
 
-export default function LatestBulletinPage() {
-  const latest = getLatest();
+export default async function LatestBulletinPage() {
+  const latest = await getLatest();
   if (!latest) notFound();
-  const resolved = resolveBulletin(latest, getConfig());
+  const resolved = await resolveStoredBulletin(latest);
   return <BulletinView resolved={resolved} />;
 }

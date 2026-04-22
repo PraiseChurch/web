@@ -71,6 +71,6 @@ const CONFIG: BulletinConfig = {
   },
 };
 
-export function getConfig(): Readonly<BulletinConfig> {
+export async function getConfig(): Promise<BulletinConfig> {
   return CONFIG;
 }

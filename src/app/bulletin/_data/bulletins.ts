@@ -1,5 +1,6 @@
-import type { Bulletin } from "../types";
+import type { Bulletin, BulletinSummary, StoredBulletin } from "../types";
 import { parseDateFromSlug } from "./slug";
+import { getConfig } from "./config";
 
 const BULLETINS: Bulletin[] = [
   {
@@ -30,17 +31,6 @@ const BULLETINS: Bulletin[] = [
 
 const CHURCH_TZ = "America/Los_Angeles";
 
-function sortByDateDesc(a: Bulletin, b: Bulletin): number {
-  return b.date.localeCompare(a.date);
-}
-
-function isPublishedAndDateReached(
-  bulletin: Bulletin,
-  isoDate: string,
-): boolean {
-  return bulletin.publishedAt !== null && bulletin.date <= isoDate;
-}
-
 function todayIso(): string {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: CHURCH_TZ,
@@ -50,26 +40,61 @@ function todayIso(): string {
   }).format(new Date());
 }
 
-export function listBulletins(): Bulletin[] {
-  return [...BULLETINS].sort(sortByDateDesc);
+function isPublishedAndDateReached(
+  bulletin: Bulletin,
+  isoDate: string,
+): boolean {
+  return bulletin.publishedAt !== null && bulletin.date <= isoDate;
 }
 
-export function listPublished(): Bulletin[] {
+async function toStoredBulletin(b: Bulletin): Promise<StoredBulletin> {
+  const config = await getConfig();
+  return {
+    bulletin: b,
+    configSnapshot: b.publishedAt !== null ? config : undefined,
+    schemaVersion: 1,
+    renderVersion: 1,
+    publishedAt: b.publishedAt,
+  };
+}
+
+function toSummary(b: Bulletin): BulletinSummary {
+  return {
+    date: b.date,
+    sermonTitle: b.sermon.title,
+    scriptureReference: b.sermon.scriptureReference,
+    publishedAt: b.publishedAt,
+  };
+}
+
+export async function listPublished(): Promise<BulletinSummary[]> {
   const today = todayIso();
-  return listBulletins().filter((b) => isPublishedAndDateReached(b, today));
+  return [...BULLETINS]
+    .filter((b) => isPublishedAndDateReached(b, today))
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .map(toSummary);
 }
 
-export function getLatest(): Bulletin | null {
-  return listPublished()[0] ?? null;
+export async function getLatest(): Promise<StoredBulletin | null> {
+  const today = todayIso();
+  const latest = [...BULLETINS]
+    .filter((b) => isPublishedAndDateReached(b, today))
+    .sort((a, b) => b.date.localeCompare(a.date))[0];
+  return latest ? toStoredBulletin(latest) : null;
 }
 
-export function getByDate(date: string): Bulletin | null {
-  return (
-    BULLETINS.find((b) => b.date === date && b.publishedAt !== null) ?? null
+export async function getPublishedByDate(
+  date: string,
+): Promise<StoredBulletin | null> {
+  const match = BULLETINS.find(
+    (b) => b.date === date && b.publishedAt !== null,
   );
+  return match ? toStoredBulletin(match) : null;
 }
 
-export function getBySlug(slug: string): Bulletin | null {
+export async function getPublishedBySlug(
+  slug: string,
+): Promise<StoredBulletin | null> {
   const date = parseDateFromSlug(slug);
-  return date ? getByDate(date) : null;
+  return date ? getPublishedByDate(date) : null;
 }
