@@ -1,4 +1,5 @@
 import { StyleSheet } from "@react-pdf/renderer";
+import "./fonts";
 
 export const colors = {
   black: "#000000",
@@ -8,6 +9,9 @@ export const colors = {
   white: "#FFFFFF",
 };
 
+const SANS = "AlrightSans";
+const SERIF = "KlinicSlab";
+
 export const styles = StyleSheet.create({
   page: {
     paddingTop: 28,
@@ -15,7 +19,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 40,
     fontSize: 10,
     color: colors.black,
-    fontFamily: "Helvetica",
+    fontFamily: SANS,
   },
   header: {
     flexDirection: "row",
@@ -34,6 +38,7 @@ export const styles = StyleSheet.create({
   },
   headerDate: {
     color: colors.orange,
+    fontFamily: SERIF,
     fontStyle: "italic",
     fontSize: 10,
   },
@@ -44,8 +49,10 @@ export const styles = StyleSheet.create({
   },
   headerWelcome: {
     color: colors.orange,
+    fontFamily: SERIF,
+    fontWeight: "bold",
+    fontStyle: "italic",
     fontSize: 10,
-    fontFamily: "Helvetica-BoldOblique",
   },
   headerAddress: {
     marginTop: 3,
@@ -61,7 +68,8 @@ export const styles = StyleSheet.create({
   },
   sectionHeading: {
     fontSize: 10,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SANS,
+    fontWeight: "bold",
     textTransform: "uppercase",
     letterSpacing: 1.5,
     marginBottom: 10,
@@ -83,7 +91,8 @@ export const styles = StyleSheet.create({
   },
   orderNumber: {
     color: colors.orange,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SANS,
+    fontWeight: "bold",
     fontSize: 9,
     marginBottom: 4,
   },
@@ -91,7 +100,8 @@ export const styles = StyleSheet.create({
     color: colors.white,
   },
   orderTitle: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SERIF,
+    fontWeight: "bold",
     fontSize: 10,
     marginBottom: 2,
   },
@@ -99,14 +109,16 @@ export const styles = StyleSheet.create({
     color: colors.white,
   },
   orderAssignment: {
-    fontSize: 9,
+    fontFamily: SERIF,
     fontStyle: "italic",
+    fontSize: 9,
     color: colors.gray,
   },
   orderAssignmentCommunion: {
     color: colors.white,
   },
   missionText: {
+    fontFamily: SERIF,
     fontSize: 9,
     color: colors.gray,
     lineHeight: 1.4,
@@ -120,13 +132,15 @@ export const styles = StyleSheet.create({
   },
   discoveryLabel: {
     color: colors.orange,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SANS,
+    fontWeight: "bold",
     fontSize: 8,
     textTransform: "uppercase",
     letterSpacing: 1,
     marginBottom: 3,
   },
   discoveryValue: {
+    fontFamily: SERIF,
     fontSize: 11,
   },
   eventsRow: {
@@ -141,41 +155,48 @@ export const styles = StyleSheet.create({
   },
   eventCategory: {
     color: colors.orange,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SANS,
+    fontWeight: "bold",
     fontSize: 8,
     textTransform: "uppercase",
     letterSpacing: 1,
     marginBottom: 2,
   },
   eventDate: {
-    fontSize: 9,
+    fontFamily: SERIF,
     fontStyle: "italic",
+    fontSize: 9,
     color: colors.gray,
     marginBottom: 3,
   },
   eventTitle: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SERIF,
+    fontWeight: "bold",
     fontSize: 10,
   },
   sermonTitle: {
     fontSize: 14,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SANS,
+    fontWeight: "bold",
     textTransform: "uppercase",
     letterSpacing: 1,
     marginBottom: 4,
   },
   sermonReference: {
     color: colors.orange,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SERIF,
+    fontWeight: "bold",
     fontSize: 10,
     marginBottom: 6,
   },
   sermonPassage: {
+    fontFamily: SERIF,
     fontSize: 10,
     lineHeight: 1.5,
     textAlign: "justify",
   },
   verseSuperscript: {
+    fontFamily: SANS,
     fontSize: 7,
     verticalAlign: "super",
   },
@@ -195,7 +216,8 @@ export const styles = StyleSheet.create({
   },
   midweekDayLabel: {
     color: colors.orange,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SANS,
+    fontWeight: "bold",
     fontSize: 9,
     textTransform: "uppercase",
     letterSpacing: 1,
@@ -207,7 +229,8 @@ export const styles = StyleSheet.create({
     marginBottom: 2,
   },
   midweekName: {
-    fontFamily: "Helvetica-Bold",
+    fontFamily: SERIF,
+    fontWeight: "bold",
     width: 120,
   },
   midweekLocation: {
@@ -225,6 +248,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoPlaceholderText: {
+    fontFamily: SERIF,
     color: colors.gray,
     fontStyle: "italic",
     fontSize: 9,
