@@ -114,3 +114,42 @@ export async function getPublishedBySlug(
   const date = parseDateFromSlug(slug);
   return date ? fetchPublishedByDate(date) : null;
 }
+
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+
+/**
+ * Admin read path — uses the cookie-based server client so RLS sees the
+ * authenticated user. Returns drafts as well as published bulletins.
+ */
+export async function adminListAll(): Promise<BulletinSummary[]> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("bulletins")
+    .select("date, data, published_at")
+    .order("date", { ascending: false });
+
+  if (error) throw new Error(`adminListAll failed: ${error.message}`);
+  return (data ?? []).map((row) => {
+    const parsed = StoredBulletinDataSchemaV1.parse(row.data);
+    return {
+      date: row.date,
+      sermonTitle: parsed.bulletin.sermon.title,
+      scriptureReference: parsed.bulletin.sermon.scriptureReference,
+      publishedAt: row.published_at,
+    };
+  });
+}
+
+export async function adminGetByDate(
+  date: string,
+): Promise<StoredBulletin | null> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("bulletins")
+    .select("date, data, published_at, schema_version, render_version")
+    .eq("date", date)
+    .maybeSingle();
+
+  if (error) throw new Error(`adminGetByDate failed: ${error.message}`);
+  return data ? parseRow(data as DbRow) : null;
+}
