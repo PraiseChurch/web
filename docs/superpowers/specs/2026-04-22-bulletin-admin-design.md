@@ -21,7 +21,7 @@ The public reader, PDF generator, routes, and view/PDF components stay untouched
 ## Non-Goals (v1)
 
 - Role-based access control (single admin role; everyone in the allowlist has full access)
-- In-app user management UI (allowlist edited via Supabase dashboard)
+- Sending an invite email when adding an admin (inviter does the human handoff)
 - Audit log / revision history
 - Autosave (explicit Save button)
 - HTML snapshots for mobile-view archive fidelity (PDF is handled via versioned components)
@@ -139,19 +139,56 @@ Session: Supabase default (1-hour access token, 30-day refresh token). Handled b
 
 ### Access control
 
-Single admin role, enforced by an email allowlist.
+Single admin role, enforced by an email allowlist with two layers of protection.
+
+**Layer 1: Before User Created hook (prevents unauthorized account creation).**
+
+A Postgres function rejects OAuth signups whose email isn't in `admin_allowlist`. Configured as the "Before User Created" auth hook in the Supabase dashboard. Without this, every random Google account that hits `/admin/login` would accumulate a row in `auth.users`.
+
+```sql
+create function check_user_allowlist(event jsonb)
+returns jsonb
+language plpgsql
+security definer
+as $$
+declare
+  user_email text;
+  allowed boolean;
+begin
+  user_email := lower(event->'claims'->>'email');
+  select exists(select 1 from admin_allowlist where lower(email) = user_email)
+    into allowed;
+  if not allowed then
+    return jsonb_build_object(
+      'decision', 'reject',
+      'message', 'This email is not authorized.'
+    );
+  end if;
+  return jsonb_build_object('decision', 'continue');
+end;
+$$;
+```
+
+The `/admin/login` callback handles the rejection error and shows a friendly "Ask the pastor for access" page.
+
+**Layer 2: RLS policies (defense in depth on writes).**
 
 ```sql
 -- Admin mutations: only rows whose user email is in admin_allowlist
 create policy "allowlisted users can write bulletins"
   on bulletins for all
-  using (auth.jwt() ->> 'email' in (select email from admin_allowlist))
-  with check (auth.jwt() ->> 'email' in (select email from admin_allowlist));
+  using (lower(auth.jwt() ->> 'email') in (select lower(email) from admin_allowlist))
+  with check (lower(auth.jwt() ->> 'email') in (select lower(email) from admin_allowlist));
 
 create policy "allowlisted users can write config"
   on bulletin_config for all
-  using (auth.jwt() ->> 'email' in (select email from admin_allowlist))
-  with check (auth.jwt() ->> 'email' in (select email from admin_allowlist));
+  using (lower(auth.jwt() ->> 'email') in (select lower(email) from admin_allowlist))
+  with check (lower(auth.jwt() ->> 'email') in (select lower(email) from admin_allowlist));
+
+create policy "allowlisted users manage admin allowlist"
+  on admin_allowlist for all
+  using (lower(auth.jwt() ->> 'email') in (select lower(email) from admin_allowlist))
+  with check (lower(auth.jwt() ->> 'email') in (select lower(email) from admin_allowlist));
 
 -- Public reads on bulletins + config (public routes). App filters drafts.
 create policy "public can read bulletins"
@@ -163,7 +200,13 @@ create policy "public can read config"
   using (true);
 ```
 
-Allowlist is edited via Supabase SQL editor — no in-app user-management UI in v1.
+All comparisons are lowercased to avoid case-sensitivity bugs (`Pastor@example.com` should match `pastor@example.com`).
+
+**Bootstrap.** The first admin email is added manually via Supabase SQL editor:
+```sql
+insert into admin_allowlist (email) values ('your-email@example.com');
+```
+After that, admins manage the allowlist through the in-app `/admin/users` page.
 
 ### Middleware gate
 
@@ -189,12 +232,13 @@ Checks Supabase session cookie on every `/admin/*` request (except `/admin/login
 
 | Route | Purpose |
 |---|---|
-| `/admin/login` | Google sign-in button |
+| `/admin/login` | Google sign-in button; handles the hook-rejection error with a friendly "ask for access" page |
 | `/admin` | Redirects to `/admin/bulletins` |
 | `/admin/bulletins` | List all bulletins (drafts + published), reverse-chronological |
 | `/admin/bulletins/new` | Create new bulletin |
 | `/admin/bulletins/[date]` | Edit existing bulletin |
 | `/admin/config` | Edit site-wide config (singleton) |
+| `/admin/users` | Manage admin allowlist — add/remove emails |
 
 ## File Structure
 
@@ -210,6 +254,7 @@ src/
         new/page.tsx                  // create form
         [date]/page.tsx               // edit form
       config/page.tsx                 // config editor
+      users/page.tsx                  // manage admin allowlist
       _components/
         AdminShell.tsx                // header + nav
         BulletinForm.tsx              // the form half of the split pane
@@ -218,10 +263,12 @@ src/
         WorshipStepOverrideRow.tsx
         UpcomingEventRow.tsx
         EnumListEditor.tsx            // generic add/remove/reorder for config.enums.*
+        AdminAllowlistTable.tsx       // /admin/users — table + add/remove form
         DirtyIndicator.tsx
       _actions/
         bulletins.ts                  // upsert, publish, unpublish, reSnapshot, delete
         config.ts                     // updateConfig
+        users.ts                      // addAdmin, removeAdmin
         auth.ts                       // signOut
     bulletin/                         // existing public routes, unchanged
       _data/
@@ -405,6 +452,20 @@ One [Save] at the bottom. Config is always live — no publish state. Saving cal
 ### List page
 
 Table: date | sermon title | status (Draft/Published) | updated time. Click row → edit page. "New bulletin" top-right prompts for a date and navigates to `/admin/bulletins/new?date=YYYY-MM-DD`.
+
+### Users page (`/admin/users`)
+
+Table of current admins (one row per email in `admin_allowlist`) with a "Remove" button per row. Below the table: an email input and an "Add admin" button.
+
+**Add admin** — calls the `addAdmin(email)` server action which lowercases + trims the email, validates basic shape with Zod (`z.string().email()`), inserts into `admin_allowlist`, and revalidates the page. The added person can immediately sign in via Google OAuth (the `before_user_created` hook now allows them). The action is "add admin," not "invite admin" — no email is sent; the human inviter handles the handoff.
+
+**Remove admin** — calls the `removeAdmin(email)` server action with two safety checks:
+1. **Self-removal blocked.** If `email === currentUser.email`, the action throws "Cannot remove yourself" and the UI disables the Remove button on the current user's row.
+2. **Last-admin blocked.** If removal would leave zero rows in `admin_allowlist`, the action throws "At least one admin must remain."
+
+If you really need to nuke yourself, do it through the Supabase SQL editor.
+
+**Existing sessions** for a removed admin remain valid until their access token expires (Supabase default 1 hour). For instant revocation, also revoke their session via Supabase dashboard. Documented in the setup guide.
 
 ## Publish / Revalidation Flow
 
