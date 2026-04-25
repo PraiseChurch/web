@@ -1,5 +1,4 @@
 import { StyleSheet } from "@react-pdf/renderer";
-import "./fonts";
 
 export const colors = {
   black: "#000000",

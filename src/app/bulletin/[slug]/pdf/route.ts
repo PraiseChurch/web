@@ -1,3 +1,4 @@
+import "../../_pdf/fonts.server";
 import { NextResponse } from "next/server";
 import { renderToStream, type DocumentProps } from "@react-pdf/renderer";
 import React from "react";
