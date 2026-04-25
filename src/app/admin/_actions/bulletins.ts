@@ -131,3 +131,17 @@ export async function deleteBulletin(date: string): Promise<void> {
     revalidatePath("/admin/bulletins");
   }
 }
+
+export async function deleteManyBulletins(dates: string[]): Promise<void> {
+  await requireAdmin();
+  if (dates.length === 0) return;
+
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("bulletins").delete().in("date", dates);
+  if (error) throw new Error(`deleteManyBulletins failed: ${error.message}`);
+
+  revalidateTag("bulletins");
+  revalidatePath("/bulletin");
+  revalidatePath("/bulletin/archive");
+  revalidatePath("/admin/bulletins");
+}
