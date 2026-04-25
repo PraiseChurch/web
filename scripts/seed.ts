@@ -1,8 +1,8 @@
 // Seeds Supabase with the current hardcoded bulletin + config data.
-// Run with: pnpm tsx scripts/seed.ts
+// Run with: pnpm seed
 //
-// Requires SUPABASE_SERVICE_ROLE_KEY in .env.local — the service role key
-// bypasses RLS so we can insert without an authenticated user.
+// Requires SUPABASE_SECRET_KEY in .env.local — the secret key bypasses RLS
+// so we can insert without an authenticated user.
 
 import { createClient } from "@supabase/supabase-js";
 import { config as loadEnv } from "dotenv";
@@ -11,16 +11,16 @@ import path from "path";
 loadEnv({ path: path.join(process.cwd(), ".env.local") });
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const SECRET_KEY = process.env.SUPABASE_SECRET_KEY;
 
-if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+if (!SUPABASE_URL || !SECRET_KEY) {
   console.error(
-    "Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in .env.local",
+    "Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SECRET_KEY in .env.local",
   );
   process.exit(1);
 }
 
-const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY, {
+const supabase = createClient(SUPABASE_URL, SECRET_KEY, {
   auth: { persistSession: false },
 });
 
