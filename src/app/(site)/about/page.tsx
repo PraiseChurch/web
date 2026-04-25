@@ -3,8 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
-import { PageHeader } from "../components/PageHeader";
-import { FluidContainer } from "../components/FluidContainer";
+import { PageHeader } from "../../components/PageHeader";
+import { FluidContainer } from "../../components/FluidContainer";
 import { Typography } from "@/components/ui/typography";
 import {
   Accordion,
@@ -12,8 +12,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import aboutData from "../../data/about.json";
-import { useSlideContext } from "../../contexts/SlideContext";
+import aboutData from "../../../data/about.json";
+import { useSlideContext } from "../../../contexts/SlideContext";
 
 export default function About() {
   const { setCurrentSlideBg } = useSlideContext();

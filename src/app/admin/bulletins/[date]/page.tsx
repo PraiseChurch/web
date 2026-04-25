@@ -1,8 +1,8 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { BulletinForm } from "../../_components/BulletinForm";
-import { getConfig } from "@/app/bulletin/_data/config";
-import { adminGetByDate } from "@/app/bulletin/_data/bulletins";
+import { getConfig } from "@/app/(site)/bulletin/_data/config";
+import { adminGetByDate } from "@/app/(site)/bulletin/_data/bulletins";
 
 export const dynamic = "force-dynamic";
 

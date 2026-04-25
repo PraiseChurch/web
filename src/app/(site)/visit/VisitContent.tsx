@@ -3,11 +3,11 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Clock, Users, Heart } from "lucide-react";
-import { PageHeader } from "../components/PageHeader";
-import { FluidContainer } from "../components/FluidContainer";
+import { PageHeader } from "../../components/PageHeader";
+import { FluidContainer } from "../../components/FluidContainer";
 import { Typography } from "@/components/ui/typography";
-import { DarkAnimatedHero } from "../components/DarkAnimatedHero";
-import { useSlideContext } from "../../contexts/SlideContext";
+import { DarkAnimatedHero } from "../../components/DarkAnimatedHero";
+import { useSlideContext } from "../../../contexts/SlideContext";
 
 export const VisitContent: React.FC = () => {
   const { setCurrentSlideBg } = useSlideContext();
@@ -32,7 +32,7 @@ export const VisitContent: React.FC = () => {
           }
         });
       },
-      { threshold: [0, 0.25, 0.5, 0.75, 1] }
+      { threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
 
     const heroElement = document.querySelector(".animated-hero");

@@ -12,9 +12,9 @@ import type {
   Bulletin,
   BulletinConfig,
   ResolvedBulletin,
-} from "@/app/bulletin/types";
-import { BulletinSchemaV1 } from "@/app/bulletin/_data/schemas";
-import { resolveBulletin } from "@/app/bulletin/_data/resolve";
+} from "@/app/(site)/bulletin/types";
+import { BulletinSchemaV1 } from "@/app/(site)/bulletin/_data/schemas";
+import { resolveBulletin } from "@/app/(site)/bulletin/_data/resolve";
 import { BulletinPreview } from "./BulletinPreview";
 import {
   upsertBulletin,

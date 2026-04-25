@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import { PDFViewer } from "@react-pdf/renderer";
-import "@/app/bulletin/_pdf/fonts.client";
-import { BulletinView } from "@/app/bulletin/_view/BulletinView";
-import { BulletinDocument } from "@/app/bulletin/_pdf/BulletinDocument";
-import type { ResolvedBulletin } from "@/app/bulletin/types";
+import "@/app/(site)/bulletin/_pdf/fonts.client";
+import { BulletinView } from "@/app/(site)/bulletin/_view/BulletinView";
+import { BulletinDocument } from "@/app/(site)/bulletin/_pdf/BulletinDocument";
+import type { ResolvedBulletin } from "@/app/(site)/bulletin/types";
 
 type PreviewMode = "mobile" | "pdf";
 

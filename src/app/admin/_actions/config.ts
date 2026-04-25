@@ -6,7 +6,7 @@ import { requireAdmin } from "@/lib/supabase/auth";
 import {
   BulletinConfigSchemaV1,
   CURRENT_SCHEMA_VERSION,
-} from "@/app/bulletin/_data/schemas";
+} from "@/app/(site)/bulletin/_data/schemas";
 
 export async function updateConfig(raw: unknown): Promise<void> {
   await requireAdmin();

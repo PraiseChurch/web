@@ -1,6 +1,6 @@
 export default function Legacy() {
-    return (
-        <div className="flex flex-col gap-12 p-10 rounded-md">
+  return (
+    <div className="flex flex-col gap-12 p-10 rounded-md">
       <div className="text-center flex flex-col gap-4">
         <h2 className="text-xl uppercase">Website Under Construction</h2>
         <h1 className="serif text-6xl uppercase">Praise Church</h1>
@@ -28,5 +28,5 @@ export default function Legacy() {
         View Our Old Website
       </a>
     </div>
-    )
+  );
 }

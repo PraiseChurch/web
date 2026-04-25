@@ -8,8 +8,8 @@ import {
   type SubmitHandler,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { BulletinConfig } from "@/app/bulletin/types";
-import { BulletinConfigSchemaV1 } from "@/app/bulletin/_data/schemas";
+import type { BulletinConfig } from "@/app/(site)/bulletin/types";
+import { BulletinConfigSchemaV1 } from "@/app/(site)/bulletin/_data/schemas";
 import { updateConfig } from "../_actions/config";
 import { EnumListEditor } from "./EnumListEditor";
 

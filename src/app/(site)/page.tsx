@@ -2,9 +2,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 import { useRef, useState, useCallback, useEffect, useMemo } from "react";
-import { SlideNavButton } from "./components/SlideNavButton";
-import { slideData } from "../constants/slides";
-import { useSlideContext } from "../contexts/SlideContext";
+import { SlideNavButton } from "../components/SlideNavButton";
+import { slideData } from "../../constants/slides";
+import { useSlideContext } from "../../contexts/SlideContext";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -24,7 +24,7 @@ export default function Home() {
   const slideRef2 = useRef<HTMLDivElement>(null);
   const slideRef3 = useRef<HTMLDivElement>(null);
   const slideRef4 = useRef<HTMLDivElement>(null);
-  
+
   const slideRefs = useMemo(() => {
     return [slideRef1, slideRef2, slideRef3, slideRef4];
   }, [slideRef1, slideRef2, slideRef3, slideRef4]);
@@ -52,7 +52,7 @@ export default function Home() {
         ref.scrollIntoView({ behavior: "smooth" });
       }
     },
-    [slideRefs]
+    [slideRefs],
   );
 
   // Intersection Observer to detect current slide with smoother snapping
@@ -75,7 +75,7 @@ export default function Home() {
         {
           threshold: [0.15, 0.85], // Trigger at 15% and 85% visibility
           rootMargin: "-5% 0px -5% 0px", // Smaller margin for more precise detection
-        }
+        },
       );
 
       observer.observe(ref.current);
@@ -107,7 +107,7 @@ export default function Home() {
             // Calculate how much of the slide is visible
             const visibleTop = Math.max(
               0,
-              Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0)
+              Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0),
             );
             const visibilityRatio = visibleTop / viewportHeight;
 
@@ -160,7 +160,9 @@ export default function Home() {
                 staggerChildren: 0.15,
               }}
               className={`flex flex-col ${slide.alignment} ${
-                slide.isSpecialSlide ? "max-w-7xl w-full px-8" : "max-w-5xl px-6 md:px-0"
+                slide.isSpecialSlide
+                  ? "max-w-7xl w-full px-8"
+                  : "max-w-5xl px-6 md:px-0"
               }`}
             >
               {/* Previous slide button - above content (mobile only) */}
@@ -179,9 +181,9 @@ export default function Home() {
                   />
                 </div>
               )}
-              
+
               {slide.content}
-              
+
               {/* Next slide button - below content (mobile only) */}
               {!slide.isSpecialSlide && idx < arr.length - 1 && (
                 <div className="mt-8 md:hidden flex justify-center">
@@ -194,7 +196,7 @@ export default function Home() {
                   />
                 </div>
               )}
-              
+
               {/* Desktop navigation - left/right layout */}
               {!slide.isSpecialSlide && (
                 <div className="hidden md:flex justify-between items-center w-full mt-12">

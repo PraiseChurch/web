@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { adminListAll } from "@/app/bulletin/_data/bulletins";
-import { formatBulletinDate } from "@/app/bulletin/_view/format";
+import { adminListAll } from "@/app/(site)/bulletin/_data/bulletins";
+import { formatBulletinDate } from "@/app/(site)/bulletin/_view/format";
 
 export const dynamic = "force-dynamic";
 

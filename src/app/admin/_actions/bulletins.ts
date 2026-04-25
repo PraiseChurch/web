@@ -3,15 +3,15 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requireAdmin } from "@/lib/supabase/auth";
-import { getConfig } from "@/app/bulletin/_data/config";
-import { adminGetByDate } from "@/app/bulletin/_data/bulletins";
-import { buildSlug } from "@/app/bulletin/_data/slug";
+import { getConfig } from "@/app/(site)/bulletin/_data/config";
+import { adminGetByDate } from "@/app/(site)/bulletin/_data/bulletins";
+import { buildSlug } from "@/app/(site)/bulletin/_data/slug";
 import {
   BulletinSchemaV1,
   CURRENT_SCHEMA_VERSION,
   CURRENT_RENDER_VERSION,
-} from "@/app/bulletin/_data/schemas";
-import type { Bulletin } from "@/app/bulletin/types";
+} from "@/app/(site)/bulletin/_data/schemas";
+import type { Bulletin } from "@/app/(site)/bulletin/types";
 
 function revalidateBulletinSurface(date: string, sermonTitle: string) {
   const slug = buildSlug(date, sermonTitle);
