@@ -7,6 +7,7 @@ const ContentSecurityPolicy = [
   "font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com",
   "img-src 'self' data: blob:",
   "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+  "frame-src 'self' blob:",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
