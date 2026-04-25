@@ -125,7 +125,7 @@ export const BulletinForm: React.FC<Props> = ({
   };
 
   return (
-    <div className="grid lg:grid-cols-2 gap-0 h-[calc(100vh-3.5rem)]">
+    <div className="grid lg:grid-cols-[3fr_7fr] gap-0 h-[calc(100vh-3.5rem)]">
       <form
         onSubmit={handleSubmit(onSave)}
         className="overflow-y-auto p-6 bg-white border-r border-gray-200 space-y-6"
