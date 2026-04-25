@@ -1,33 +1,8 @@
-import type { Bulletin, BulletinSummary, StoredBulletin } from "../types";
+import { unstable_cache } from "next/cache";
+import type { BulletinSummary, StoredBulletin } from "../types";
+import { createSupabasePublicClient } from "@/lib/supabase/public";
 import { parseDateFromSlug } from "./slug";
-import { getConfig } from "./config";
-
-const BULLETINS: Bulletin[] = [
-  {
-    date: "2026-01-04",
-    sermon: {
-      title: "Doing Good Is From God",
-      scriptureReference: "3 John 1:9-11",
-      scripturePassage:
-        "{9} I wrote something to the church (yet the church did not receive the letter) because Diotrephes does not accept us since loves to place himself first. {10} Because of this, I will remind him of his works when I come; namely, he works by talking about us with evil words and he does not accept the brothers. Not satisfied with these things, he hinders those who wish to come and casts them out of the church. {11} Beloved, imitate not evil, but imitate good. The one doing good is from God and the one doing evil does not see God.",
-    },
-    assignmentOverrides: {},
-    isCommunion: true,
-    discovery: {
-      mens: "Parlor",
-      womens: "Sunday School Room",
-    },
-    upcomingEvents: [
-      { category: "WOMEN", date: "2026-01-10", title: "Women's Fellowship" },
-      {
-        category: "COUPLES",
-        date: "2026-02-14",
-        title: "Couple's Valentine's Dinner",
-      },
-    ],
-    publishedAt: "2026-01-01T12:00:00Z",
-  },
-];
+import { StoredBulletinDataSchemaV1 } from "./schemas";
 
 const CHURCH_TZ = "America/Los_Angeles";
 
@@ -40,61 +15,102 @@ function todayIso(): string {
   }).format(new Date());
 }
 
-function isPublishedAndDateReached(
-  bulletin: Bulletin,
-  isoDate: string,
-): boolean {
-  return bulletin.publishedAt !== null && bulletin.date <= isoDate;
-}
+type DbRow = {
+  date: string;
+  data: unknown;
+  published_at: string | null;
+  schema_version: number;
+  render_version: number;
+};
 
-async function toStoredBulletin(b: Bulletin): Promise<StoredBulletin> {
-  const config = await getConfig();
+function parseRow(row: DbRow): StoredBulletin {
+  if (row.schema_version !== 1) {
+    throw new Error(
+      `bulletin row ${row.date} has schema_version ${row.schema_version}; deploy newer code`,
+    );
+  }
+  const parsed = StoredBulletinDataSchemaV1.parse(row.data);
   return {
-    bulletin: b,
-    configSnapshot: b.publishedAt !== null ? config : undefined,
-    schemaVersion: 1,
-    renderVersion: 1,
-    publishedAt: b.publishedAt,
+    bulletin: parsed.bulletin,
+    configSnapshot: parsed.configSnapshot,
+    schemaVersion: row.schema_version,
+    renderVersion: row.render_version,
+    publishedAt: row.published_at,
   };
 }
 
-function toSummary(b: Bulletin): BulletinSummary {
-  return {
-    date: b.date,
-    sermonTitle: b.sermon.title,
-    scriptureReference: b.sermon.scriptureReference,
-    publishedAt: b.publishedAt,
-  };
+async function fetchPublishedSummaries(): Promise<BulletinSummary[]> {
+  const today = todayIso();
+  const supabase = createSupabasePublicClient();
+  const { data, error } = await supabase
+    .from("bulletins")
+    .select("date, data, published_at")
+    .not("published_at", "is", null)
+    .lte("date", today)
+    .order("date", { ascending: false });
+
+  if (error) throw new Error(`listPublished failed: ${error.message}`);
+  return (data ?? []).map((row) => {
+    const parsed = StoredBulletinDataSchemaV1.parse(row.data);
+    return {
+      date: row.date,
+      sermonTitle: parsed.bulletin.sermon.title,
+      scriptureReference: parsed.bulletin.sermon.scriptureReference,
+      publishedAt: row.published_at,
+    };
+  });
 }
 
-export async function listPublished(): Promise<BulletinSummary[]> {
+async function fetchLatest(): Promise<StoredBulletin | null> {
   const today = todayIso();
-  return [...BULLETINS]
-    .filter((b) => isPublishedAndDateReached(b, today))
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .map(toSummary);
+  const supabase = createSupabasePublicClient();
+  const { data, error } = await supabase
+    .from("bulletins")
+    .select("date, data, published_at, schema_version, render_version")
+    .not("published_at", "is", null)
+    .lte("date", today)
+    .order("date", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) throw new Error(`getLatest failed: ${error.message}`);
+  return data ? parseRow(data as DbRow) : null;
 }
 
-export async function getLatest(): Promise<StoredBulletin | null> {
-  const today = todayIso();
-  const latest = [...BULLETINS]
-    .filter((b) => isPublishedAndDateReached(b, today))
-    .sort((a, b) => b.date.localeCompare(a.date))[0];
-  return latest ? toStoredBulletin(latest) : null;
+async function fetchPublishedByDate(
+  date: string,
+): Promise<StoredBulletin | null> {
+  const supabase = createSupabasePublicClient();
+  const { data, error } = await supabase
+    .from("bulletins")
+    .select("date, data, published_at, schema_version, render_version")
+    .eq("date", date)
+    .not("published_at", "is", null)
+    .maybeSingle();
+
+  if (error) throw new Error(`getPublishedByDate failed: ${error.message}`);
+  return data ? parseRow(data as DbRow) : null;
 }
+
+export const listPublished = unstable_cache(
+  fetchPublishedSummaries,
+  ["bulletin-list-published"],
+  { tags: ["bulletins"] },
+);
+
+export const getLatest = unstable_cache(fetchLatest, ["bulletin-latest"], {
+  tags: ["bulletins"],
+});
 
 export async function getPublishedByDate(
   date: string,
 ): Promise<StoredBulletin | null> {
-  const match = BULLETINS.find(
-    (b) => b.date === date && b.publishedAt !== null,
-  );
-  return match ? toStoredBulletin(match) : null;
+  return fetchPublishedByDate(date);
 }
 
 export async function getPublishedBySlug(
   slug: string,
 ): Promise<StoredBulletin | null> {
   const date = parseDateFromSlug(slug);
-  return date ? getPublishedByDate(date) : null;
+  return date ? fetchPublishedByDate(date) : null;
 }
